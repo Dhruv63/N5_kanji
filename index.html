@@ -1332,6 +1332,35 @@
 <script>
     // Text-to-Speech Pronunciation
     function speakText(text) {
+        // Try Google TTS first
+        const googleUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(text)}`;
+        const audio = new Audio(googleUrl);
+        
+        let fallbackTriggered = false;
+        function triggerFallback() {
+            if (fallbackTriggered) return;
+            fallbackTriggered = true;
+            
+            // Youdao Japanese TTS endpoint
+            const youdaoUrl = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&le=jap`;
+            const audio2 = new Audio(youdaoUrl);
+            
+            let fallback2Triggered = false;
+            function triggerLocalFallback() {
+                if (fallback2Triggered) return;
+                fallback2Triggered = true;
+                speakLocalSpeech(text);
+            }
+            
+            audio2.onerror = triggerLocalFallback;
+            audio2.play().catch(triggerLocalFallback);
+        }
+
+        audio.onerror = triggerFallback;
+        audio.play().catch(triggerFallback);
+    }
+
+    function speakLocalSpeech(text) {
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel(); // Stop any current speech
             const utterance = new SpeechSynthesisUtterance(text);
