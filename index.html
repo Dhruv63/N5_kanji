@@ -896,6 +896,71 @@
             color: var(--primary-cafe);
             background: #ffffff;
         }
+        .practice-btn.active {
+            background: var(--primary-cafe);
+            color: var(--bg-color);
+            border-color: var(--primary-cafe);
+        }
+        #svgGuideHolder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        #svgGuideHolder svg {
+            width: 100%;
+            height: 100%;
+        }
+        #svgGuideHolder path {
+            stroke: #ebdcd0 !important;
+            stroke-width: 3px !important;
+            fill: none !important;
+            transition: stroke 0.3s ease, stroke-width 0.3s ease;
+        }
+        #svgGuideHolder text {
+            font-family: inherit;
+            font-size: 8px !important;
+            fill: var(--text-muted) !important;
+            font-weight: bold !important;
+        }
+        .congrats-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(250, 246, 240, 0.96);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            border-radius: 14px;
+        }
+        .congrats-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .congrats-overlay h4 {
+            font-size: 1.4rem;
+            color: var(--primary-cafe);
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        .congrats-overlay p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
         .canvas-container {
             position: relative;
             width: 300px;
@@ -1388,15 +1453,37 @@
             <!-- Handwriting Practice Widget -->
             <div class="practice-section">
                 <div class="practice-header">
-                    <h3 class="practice-title">🎨 Ink Brush Practice</h3>
+                    <h3 class="practice-title" id="practiceTitle">🎨 Ink Brush Practice</h3>
+                    <div class="practice-controls">
+                        <button class="practice-btn active" id="btnModeFree" onclick="setPracticeMode('free')">✏️ Free Draw</button>
+                        <button class="practice-btn" id="btnModeGame" onclick="setPracticeMode('game')">🎮 Play Game</button>
+                    </div>
+                </div>
+                
+                <!-- Status sub-bar for Game Mode -->
+                <div id="gameStatusPanel" style="display: none; justify-content: space-between; align-items: center; width: 100%; font-size: 0.85rem; font-weight: 700; color: var(--on-text); margin-top: -5px; padding: 2px 4px;">
+                    <span id="gameStatusText">Loading stroke paths...</span>
+                    <button class="practice-btn" id="btnRestartGame" style="padding: 3px 8px; font-size: 0.75rem;">🔄 Restart</button>
+                </div>
+
+                <div class="canvas-container">
+                    <div class="canvas-guide-bg" id="canvasGuideBg">一</div>
+                    <div id="svgGuideHolder" style="display: none;"></div>
+                    <canvas id="practiceCanvas" width="300" height="300"></canvas>
+                    
+                    <!-- Game Congrats Overlay -->
+                    <div class="congrats-overlay" id="gameCongratsOverlay">
+                        <h4>🏆 Masterful Brushwork!</h4>
+                        <p>You traced all strokes in the correct order and direction!</p>
+                        <button class="practice-btn" onclick="setPracticeMode('free')" style="background: var(--primary-cafe); color: #ffffff;">Keep Doodling</button>
+                    </div>
+                </div>
+
+                <div class="practice-header" id="practiceFooterControls" style="border-bottom: none; border-top: 1px dashed var(--border-color); padding-bottom: 0; padding-top: 10px; justify-content: flex-end;">
                     <div class="practice-controls">
                         <button class="practice-btn" id="btnToggleGuide">👁️ Hide Guide</button>
                         <button class="practice-btn" id="btnClearCanvas">🧹 Clear</button>
                     </div>
-                </div>
-                <div class="canvas-container">
-                    <div class="canvas-guide-bg" id="canvasGuideBg">一</div>
-                    <canvas id="practiceCanvas" width="300" height="300"></canvas>
                 </div>
             </div>
             <div class="vocab-grid">
@@ -4109,25 +4196,37 @@
         }
     });
 
-    // Handwriting Practice Canvas Logic
+    // Handwriting Practice Canvas Logic & Stroke-Order Game Engine
     const canvas = document.getElementById("practiceCanvas");
     const ctx = canvas.getContext("2d");
     const btnToggleGuide = document.getElementById("btnToggleGuide");
     const btnClearCanvas = document.getElementById("btnClearCanvas");
     const canvasGuideBg = document.getElementById("canvasGuideBg");
+    const svgGuideHolder = document.getElementById("svgGuideHolder");
 
     let drawing = false;
     let guideVisible = true;
+    let practiceMode = "free"; // "free" or "game"
+
+    // Stroke-Order Game State
+    let currentKanjiChar = "";
+    let kanjiVgPaths = [];      // Parsed vector paths from SVG
+    let currentStrokeIdx = 0;   // Tracing stroke index
+    let sampledPoints = [];     // Key collision coordinates along active path
+    let lastSampledPointIdx = 0;// Index of last hit coordinate along active path
+    let gameTracingActive = false;
 
     // Set brush style (ink effect)
-    ctx.lineWidth = 6;
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = "#5c3d2e"; // Cozy espresso brown ink color
+    function setBrushStyle() {
+        ctx.lineWidth = 6;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.strokeStyle = "#5c3d2e"; // Cozy espresso brown ink color
+    }
+    setBrushStyle();
 
     function getCanvasCoordinates(e) {
         const rect = canvas.getBoundingClientRect();
-        // Support mouse and touch events
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
         return {
@@ -4136,25 +4235,113 @@
         };
     }
 
+    function distance(p1, p2) {
+        return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2);
+    }
+
     function startDrawing(e) {
-        drawing = true;
+        if (practiceMode === "game" && document.getElementById("gameCongratsOverlay").classList.contains("active")) {
+            return;
+        }
+
         const coords = getCanvasCoordinates(e);
-        ctx.beginPath();
-        ctx.moveTo(coords.x, coords.y);
+
+        if (practiceMode === "game") {
+            if (sampledPoints.length === 0) return;
+            
+            // User must start drawing close to the Start target point (green dot)
+            const startPt = sampledPoints[0];
+            if (distance(coords, startPt) < 30) {
+                gameTracingActive = true;
+                lastSampledPointIdx = 0;
+                ctx.beginPath();
+                ctx.moveTo(coords.x, coords.y);
+                setBrushStyle();
+            } else {
+                gameTracingActive = false;
+                // Highlight warning by changing text color temporarily
+                const txt = document.getElementById("gameStatusText");
+                txt.innerText = "⚠️ Start at the green dot!";
+                txt.style.color = "#c62828";
+                setTimeout(() => {
+                    if (practiceMode === "game" && gameTracingActive === false && currentStrokeIdx < kanjiVgPaths.length) {
+                        txt.innerText = `Trace stroke ${currentStrokeIdx + 1} of ${kanjiVgPaths.length}`;
+                        txt.style.color = "var(--on-text)";
+                    }
+                }, 1200);
+            }
+        } else {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(coords.x, coords.y);
+            setBrushStyle();
+        }
         e.preventDefault();
     }
 
     function draw(e) {
-        if (!drawing) return;
         const coords = getCanvasCoordinates(e);
-        ctx.lineTo(coords.x, coords.y);
-        ctx.stroke();
+
+        if (practiceMode === "game") {
+            if (!gameTracingActive || sampledPoints.length === 0) return;
+            
+            // Check if cursor wandered too far from any point on the active path
+            const minDist = Math.min(...sampledPoints.map(p => distance(coords, p)));
+            if (minDist > 45) {
+                // Wandered too far: break the stroke drawing
+                gameTracingActive = false;
+                ctx.closePath();
+                drawGameGuides();
+                
+                const txt = document.getElementById("gameStatusText");
+                txt.innerText = "⚠️ Stay on the highlighted path!";
+                txt.style.color = "#c62828";
+                setTimeout(() => {
+                    if (practiceMode === "game" && gameTracingActive === false && currentStrokeIdx < kanjiVgPaths.length) {
+                        txt.innerText = `Trace stroke ${currentStrokeIdx + 1} of ${kanjiVgPaths.length}`;
+                        txt.style.color = "var(--on-text)";
+                    }
+                }, 1200);
+                return;
+            }
+
+            // Draw current path segment on canvas
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+
+            // Verify if user passed the next target point along the stroke path
+            const nextTargetIdx = lastSampledPointIdx + 1;
+            if (nextTargetIdx < sampledPoints.length) {
+                const nextTarget = sampledPoints[nextTargetIdx];
+                if (distance(coords, nextTarget) < 35) {
+                    lastSampledPointIdx = nextTargetIdx;
+                }
+            }
+
+            // Verify if user arrived at the final target point (red dot)
+            if (lastSampledPointIdx === sampledPoints.length - 1) {
+                completeActiveStroke();
+            }
+        } else {
+            if (!drawing) return;
+            ctx.lineTo(coords.x, coords.y);
+            ctx.stroke();
+        }
         e.preventDefault();
     }
 
     function stopDrawing() {
-        drawing = false;
-        ctx.closePath();
+        if (practiceMode === "game") {
+            if (gameTracingActive) {
+                // If they lift the pen before finishing the stroke, clear the trace
+                gameTracingActive = false;
+                ctx.closePath();
+                drawGameGuides();
+            }
+        } else {
+            drawing = false;
+            ctx.closePath();
+        }
     }
 
     // Mouse Listeners
@@ -4168,7 +4355,7 @@
     canvas.addEventListener("touchmove", draw, { passive: false });
     canvas.addEventListener("touchend", stopDrawing);
 
-    // Controls listeners
+    // Free draw clear button
     btnClearCanvas.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
@@ -4184,14 +4371,231 @@
         }
     });
 
-    // Reset canvas when opening a new modal
-    function resetCanvas(kanji) {
+    // Practice Mode Controller
+    window.setPracticeMode = function(mode) {
+        practiceMode = mode;
+        const btnFree = document.getElementById("btnModeFree");
+        const btnGame = document.getElementById("btnModeGame");
+        const statusPanel = document.getElementById("gameStatusPanel");
+        const footerControls = document.getElementById("practiceFooterControls");
+        const guideBg = document.getElementById("canvasGuideBg");
+        
+        document.getElementById("gameCongratsOverlay").classList.remove("active");
+
+        if (mode === "free") {
+            btnFree.classList.add("active");
+            btnGame.classList.remove("active");
+            statusPanel.style.display = "none";
+            footerControls.style.display = "flex";
+            guideBg.style.display = guideVisible ? "flex" : "none";
+            svgGuideHolder.style.display = "none";
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        } else {
+            btnFree.classList.remove("active");
+            btnGame.classList.add("active");
+            statusPanel.style.display = "flex";
+            footerControls.style.display = "none";
+            guideBg.style.display = "none";
+            svgGuideHolder.style.display = "block";
+            
+            startGameMode();
+        }
+    };
+
+    // Restart button in game status panel
+    document.getElementById("btnRestartGame").addEventListener("click", () => {
+        document.getElementById("gameCongratsOverlay").classList.remove("active");
+        startGameMode();
+    });
+
+    // Fetch and parse KanjiVG SVG from CDN
+    async function fetchSvgForKanji(kanji) {
+        const code = kanji.charCodeAt(0).toString(16).toLowerCase();
+        const padded = code.padStart(5, '0');
+        const url = `https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg@master/kanji/${padded}.svg`;
+        
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error("Network response not ok");
+            const svgText = await res.text();
+            
+            svgGuideHolder.innerHTML = svgText;
+            const svg = svgGuideHolder.querySelector("svg");
+            if (!svg) throw new Error("Invalid SVG parsed");
+            
+            kanjiVgPaths = Array.from(svg.querySelectorAll("path"));
+            return true;
+        } catch (e) {
+            console.error("Failed to load KanjiVG:", e);
+            kanjiVgPaths = [];
+            return false;
+        }
+    }
+
+    function startGameMode() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        currentStrokeIdx = 0;
+        gameTracingActive = false;
+        
+        const txt = document.getElementById("gameStatusText");
+        if (kanjiVgPaths.length === 0) {
+            txt.innerText = "⚠️ Tracing outline unavailable";
+            txt.style.color = "#c62828";
+            return;
+        }
+        
+        txt.style.color = "var(--on-text)";
+        txt.innerText = `Trace stroke 1 of ${kanjiVgPaths.length}`;
+        prepareActiveStroke();
+    }
+
+    function prepareActiveStroke() {
+        if (currentStrokeIdx >= kanjiVgPaths.length) return;
+        
+        const path = kanjiVgPaths[currentStrokeIdx];
+        const length = path.getTotalLength();
+        
+        // Sample coordinates along active path (Scale factor: 300px canvas / 109px SVG outline box = 2.75)
+        const numSamples = 8;
+        sampledPoints = [];
+        for (let i = 0; i <= numSamples; i++) {
+            const dist = (i / numSamples) * length;
+            const pt = path.getPointAtLength(dist);
+            sampledPoints.push({ x: pt.x * 2.75, y: pt.y * 2.75 });
+        }
+        
+        // Highlight active stroke and hide finished ones in background SVG guide
+        const svgPaths = svgGuideHolder.querySelectorAll("path");
+        svgPaths.forEach((p, idx) => {
+            if (idx === currentStrokeIdx) {
+                p.setAttribute("style", "stroke: rgba(181, 131, 90, 0.6) !important; stroke-width: 6px !important;");
+            } else if (idx < currentStrokeIdx) {
+                p.setAttribute("style", "stroke: transparent !important;"); // Hide drawn ones
+            } else {
+                p.setAttribute("style", "stroke: #ebdcd0 !important; stroke-width: 3px !important;");
+            }
+        });
+        
+        drawGameGuides();
+    }
+
+    function drawGameGuides() {
+        // 1. Clear active canvas screen
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 2. Draw all completed strokes permanently in beautiful ink
+        ctx.save();
+        ctx.scale(2.75, 2.75);
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = "#5c3d2e";
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        for (let i = 0; i < currentStrokeIdx; i++) {
+            const dAttr = kanjiVgPaths[i].getAttribute("d");
+            ctx.stroke(new Path2D(dAttr));
+        }
+        ctx.restore();
+        
+        // 3. Draw Start target dot (Green) and End target dot (Red)
+        if (sampledPoints.length > 0) {
+            const startPt = sampledPoints[0];
+            const endPt = sampledPoints[sampledPoints.length - 1];
+            
+            // Start Target (Green ring/dot)
+            ctx.beginPath();
+            ctx.arc(startPt.x, startPt.y, 13, 0, Math.PI * 2);
+            ctx.fillStyle = "#2e7d32";
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(startPt.x, startPt.y, 9, 0, Math.PI * 2);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(startPt.x, startPt.y, 6, 0, Math.PI * 2);
+            ctx.fillStyle = "#2e7d32";
+            ctx.fill();
+            
+            // End Target (Red dot)
+            ctx.beginPath();
+            ctx.arc(endPt.x, endPt.y, 9, 0, Math.PI * 2);
+            ctx.fillStyle = "#c62828";
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.arc(endPt.x, endPt.y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = "#ffffff";
+            ctx.fill();
+        }
+    }
+
+    function completeActiveStroke() {
+        gameTracingActive = false;
+        currentStrokeIdx++;
+        
+        const txt = document.getElementById("gameStatusText");
+        
+        if (currentStrokeIdx >= kanjiVgPaths.length) {
+            // Draw last stroke officially
+            drawGameGuides();
+            txt.innerText = "🏆 Character Complete!";
+            document.getElementById("gameCongratsOverlay").classList.add("active");
+            
+            // Update local SRS progress (mark as active/learned when successfully traced)
+            if (currentModalItem) {
+                const record = srsState[currentModalItem.kanji];
+                if (record && record.state === "new") {
+                    record.state = "learning";
+                    record.nextReview = Date.now() + 10 * 60 * 1000; // review in 10 mins
+                    saveSrsData();
+                    renderDashboard();
+                }
+            }
+        } else {
+            txt.innerText = `Trace stroke ${currentStrokeIdx + 1} of ${kanjiVgPaths.length}`;
+            prepareActiveStroke();
+        }
+    }
+
+    // Reset canvas when opening a new modal
+    async function resetCanvas(kanji) {
+        currentKanjiChar = kanji;
+        kanjiVgPaths = [];
+        sampledPoints = [];
+        currentStrokeIdx = 0;
+        gameTracingActive = false;
+        
+        // Wipe canvas drawing
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Set fallback standard guide text
         canvasGuideBg.innerText = kanji;
-        // Default to guide visible when opening new kanji details
-        guideVisible = true;
-        canvasGuideBg.style.display = "flex";
-        btnToggleGuide.innerText = "👁️ Hide Guide";
+        document.getElementById("gameCongratsOverlay").classList.remove("active");
+        
+        // Hide SVG guide while loading new one
+        svgGuideHolder.style.display = "none";
+        
+        const txt = document.getElementById("gameStatusText");
+        txt.innerText = "⏳ Loading stroke order...";
+        txt.style.color = "var(--text-muted)";
+        
+        // Fetch vector outline
+        const ok = await fetchSvgForKanji(kanji);
+        
+        if (ok) {
+            if (practiceMode === "game") {
+                svgGuideHolder.style.display = "block";
+                startGameMode();
+            } else {
+                txt.innerText = "Outline loaded. Toggle Game to play!";
+                txt.style.color = "var(--text-muted)";
+            }
+        } else {
+            txt.innerText = "⚠️ Failed to load stroke vectors";
+            txt.style.color = "#c62828";
+        }
     }
 
     // SEARCH FILTER
