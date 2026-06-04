@@ -1,0 +1,4030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☕ JLPT N5 Kanji Master Guide — Cozy Lofi Cafe Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f5ece1;       /* Warm milk foam/latte background */
+            --card-bg: #faf6f0;       /* Latte cream card background */
+            --primary-cafe: #5c3d2e;   /* Deep espresso brown / dark cocoa */
+            --accent-cozy: #b5835a;    /* Warm cinnamon/amber */
+            --text-main: #2a1810;      /* Dark coffee bean */
+            --text-muted: #8c7355;     /* Warm coffee steam gray */
+            --border-color: #dfd3c3;   /* Soft wood border outline */
+            --kun-bg: #f4eae1;         /* Soft warm latte tint */
+            --kun-text: #5c3d2e;
+            --on-bg: #fbf0e3;          /* Soft amber tint */
+            --on-text: #a85032;        /* Darker spiced cinnamon */
+            --shadow-cozy: 0 8px 30px rgba(88, 61, 46, 0.06);
+            --shadow-hover: 0 16px 40px rgba(88, 61, 46, 0.12);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            background-image: 
+                radial-gradient(var(--border-color) 1.5px, transparent 1.5px),
+                radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Lofi Cafe Header */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-cozy);
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-cafe), var(--accent-cozy), var(--primary-cafe));
+        }
+
+        .cafe-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: var(--on-bg);
+            border-radius: 50%;
+            margin-bottom: 16px;
+            border: 2px dashed var(--accent-cozy);
+        }
+
+        .cafe-logo svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--primary-cafe);
+        }
+
+        header h1 {
+            color: var(--primary-cafe);
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+
+        /* Nav Tabs Switcher */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+            gap: 15px;
+        }
+
+        .nav-tab {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 12px 30px;
+            border-radius: 16px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow-cozy);
+            transition: var(--transition-smooth);
+            font-family: inherit;
+        }
+
+        .nav-tab.active {
+            background: var(--primary-cafe);
+            color: var(--bg-color);
+            border-color: var(--primary-cafe);
+        }
+
+        .nav-tab:hover:not(.active) {
+            border-color: var(--accent-cozy);
+            color: var(--primary-cafe);
+            transform: translateY(-2px);
+        }
+
+        /* Interactive Search Area */
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 18px 24px 18px 60px;
+            font-family: inherit;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            outline: none;
+            box-shadow: var(--shadow-cozy);
+            transition: var(--transition-smooth);
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-cozy);
+            box-shadow: 0 10px 25px rgba(181, 131, 90, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            pointer-events: none;
+            fill: var(--text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .search-bar:focus + .search-icon {
+            fill: var(--accent-cozy);
+        }
+
+        /* Cozy Theme Sections */
+        .theme-section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-cozy);
+            padding: 35px;
+            margin-bottom: 50px;
+            border: 2px solid var(--border-color);
+            transition: var(--transition-smooth);
+        }
+
+        .theme-section:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .theme-title {
+            color: var(--primary-cafe);
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            background: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            min-width: 950px;
+        }
+
+        th {
+            background-color: var(--kun-bg);
+            color: var(--primary-cafe);
+            font-weight: 800;
+            padding: 16px 20px;
+            border-bottom: 2px solid var(--border-color);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 2px solid var(--border-color);
+            vertical-align: top;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr {
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        tr:hover {
+            background-color: #fcf9f5;
+        }
+
+        tr:hover .kanji-col {
+            transform: scale(1.1);
+            color: var(--accent-cozy);
+        }
+
+        .kanji-col-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .kanji-col {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary-cafe);
+            line-height: 1;
+            width: 100px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            display: inline-block;
+        }
+
+        /* Bean Badges on List */
+        .bean-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .bean-badge.srs-new { background-color: #ebe5dd; color: #8c7355; }
+        .bean-badge.srs-learn { background-color: #fbeedb; color: #b85c38; }
+        .bean-badge.srs-master { background-color: var(--primary-cafe); color: #ffffff; }
+
+        .meaning-tag {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .reading-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-width: 220px;
+        }
+
+        .reading-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .reading-badge.kun {
+            background-color: var(--kun-bg);
+            color: var(--kun-text);
+            border: 1px solid rgba(92, 61, 46, 0.15);
+        }
+
+        .reading-badge.on {
+            background-color: var(--on-bg);
+            color: var(--on-text);
+            border: 1px solid rgba(184, 92, 56, 0.15);
+        }
+
+        .stroke-hint {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            max-width: 180px;
+        }
+
+        .interpretation-text {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-width: 220px;
+        }
+
+        .example-box {
+            background-color: #fdfbf7;
+            border-left: 4px solid var(--accent-cozy);
+            padding: 10px 16px;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.9rem;
+            max-width: 240px;
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(88, 61, 46, 0.02);
+            transition: var(--transition-smooth);
+        }
+
+        tr:hover .example-box {
+            background-color: #ffffff;
+            border-left-color: var(--primary-cafe);
+            box-shadow: 0 4px 12px rgba(88, 61, 46, 0.05);
+        }
+
+        .example-jp {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .example-en {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: block;
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Responsive Mobile Styling Queries */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            header {
+                padding: 30px 15px;
+                margin-bottom: 25px;
+                border-radius: 18px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            .nav-container {
+                gap: 8px;
+                width: 100%;
+            }
+
+            .nav-tab {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+                flex: 1;
+                text-align: center;
+                border-radius: 12px;
+            }
+
+            .search-bar {
+                padding: 14px 20px 14px 50px;
+                font-size: 0.95rem;
+                border-radius: 12px;
+            }
+
+            .search-icon {
+                left: 18px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .theme-section {
+                padding: 20px 15px;
+                margin-bottom: 30px;
+                border-radius: 18px;
+            }
+
+            .theme-title {
+                font-size: 1.35rem;
+                margin-bottom: 15px;
+            }
+
+            /* Responsive Table-to-Card Grid */
+            .table-responsive {
+                border: none;
+                background: transparent;
+            }
+
+            table, thead, tbody, tr, td {
+                display: block;
+                width: 100% !important;
+            }
+
+            table thead {
+                display: none; /* Hide headers */
+            }
+
+            tbody tr {
+                background: var(--card-bg);
+                border: 2px solid var(--border-color);
+                border-radius: 18px;
+                padding: 18px;
+                margin-bottom: 20px;
+                box-shadow: var(--shadow-cozy);
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            tbody tr:last-child {
+                margin-bottom: 0;
+            }
+
+            tbody tr:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            td {
+                padding: 0 !important;
+                border-bottom: 1px dashed var(--border-color) !important;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                width: 100% !important;
+                text-align: left;
+            }
+
+            td:last-child {
+                border-bottom: none !important;
+            }
+
+            /* Special layout for Kanji Col */
+            td:nth-child(1) {
+                border-bottom: 2px solid var(--border-color) !important;
+                padding-bottom: 8px !important;
+            }
+
+            .kanji-col-container {
+                flex-direction: row !important;
+                justify-content: space-between;
+                width: 100%;
+                align-items: center;
+            }
+
+            .kanji-col {
+                font-size: 3.2rem;
+                text-align: left;
+                width: auto;
+            }
+
+            /* Add labels dynamically on mobile cards */
+            td:nth-child(2)::before {
+                content: "Meaning";
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 0.05em;
+            }
+
+            td:nth-child(3)::before {
+                content: "Readings";
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 0.05em;
+            }
+
+            td:nth-child(4)::before {
+                content: "Stroke Hint";
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 0.05em;
+            }
+
+            td:nth-child(5)::before {
+                content: "Visual Mnemonic";
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 0.05em;
+            }
+
+            td:nth-child(6)::before {
+                content: "Contextual Example";
+                font-size: 0.7rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 0.05em;
+            }
+
+            .reading-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                max-width: 100%;
+            }
+
+            .stroke-hint, .interpretation-text, .example-box {
+                max-width: 100% !important;
+            }
+
+            .example-box {
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                border-left: 4px solid var(--accent-cozy);
+            }
+
+            /* Modal Adaptations */
+            .kanji-modal {
+                width: 95%;
+                border-radius: 20px;
+            }
+
+            .modal-header {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .modal-kanji-circle {
+                width: 70px;
+                height: 70px;
+                font-size: 2.8rem;
+                border-radius: 12px;
+            }
+
+            .modal-title-area h2 {
+                font-size: 1.4rem;
+            }
+
+            .modal-body {
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .modal-info-row, .vocab-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            /* Flashcard Study view */
+            .flashcard-wrapper {
+                height: 480px;
+            }
+
+            .srs-stats-banner {
+                padding: 10px;
+            }
+
+            .stat-val {
+                font-size: 1.3rem;
+            }
+
+            .stat-lbl {
+                font-size: 0.7rem;
+            }
+
+            .card-face {
+                padding: 20px;
+            }
+
+            .card-front .kanji-large {
+                font-size: 6.5rem;
+            }
+        }
+
+        /* Detailed Study Card Modal Styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(43, 24, 16, 0.5);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .kanji-modal {
+            background: var(--card-bg);
+            border-radius: 28px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(43, 24, 16, 0.2);
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .kanji-modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: var(--on-bg);
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+
+        .modal-kanji-circle {
+            background: var(--card-bg);
+            width: 110px;
+            height: 110px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary-cafe);
+            border: 2px dashed var(--accent-cozy);
+            box-shadow: var(--shadow-cozy);
+        }
+
+        .modal-title-area h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-cafe);
+            margin-bottom: 6px;
+        }
+
+        .modal-title-area p {
+            color: var(--on-text);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-muted);
+            box-shadow: var(--shadow-cozy);
+            transition: var(--transition-smooth);
+        }
+
+        .modal-close-btn:hover {
+            color: var(--primary-cafe);
+            border-color: var(--accent-cozy);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-info-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #ffffff;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .info-card-content {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .mnemonic-section {
+            border-left: 4px solid var(--accent-cozy);
+            padding-left: 16px;
+            margin: 5px 0;
+        }
+
+        .mnemonic-title {
+            font-weight: 700;
+            color: var(--primary-cafe);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .mnemonic-text {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .vocab-card {
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            background: #ffffff;
+            transition: var(--transition-smooth);
+        }
+
+        .vocab-card:hover {
+            box-shadow: var(--shadow-cozy);
+            border-color: var(--accent-cozy);
+        }
+
+        .vocab-card.simple-vocab {
+            border-top: 4px solid var(--kun-text);
+        }
+
+        .vocab-card.compound-vocab {
+            border-top: 4px solid var(--on-text);
+        }
+
+        .vocab-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .simple-vocab .vocab-badge {
+            background: var(--kun-bg);
+            color: var(--kun-text);
+        }
+
+        .compound-vocab .vocab-badge {
+            background: var(--on-bg);
+            color: var(--on-text);
+        }
+
+        .vocab-jp-word {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .vocab-reading {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .vocab-meaning {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-cafe);
+            margin-bottom: 16px;
+        }
+
+        .vocab-sentence-box {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .vocab-sentence-jp {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .vocab-sentence-en {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: block;
+            line-height: 1.3;
+        }
+
+        /* STUDY VIEW (SRS Flashcards) */
+        #study-mode-view {
+            display: none;
+        }
+
+        .study-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .srs-stats-banner {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 18px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-cozy);
+        }
+
+        .stat-box {
+            text-align: center;
+            flex: 1;
+            border-right: 1px dashed var(--border-color);
+        }
+
+        .stat-box:last-child {
+            border-right: none;
+        }
+
+        .stat-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-cafe);
+            line-height: 1.2;
+        }
+
+        .stat-lbl {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        /* 3D Flashcard flip wrapper */
+        .flashcard-wrapper {
+            perspective: 1000px;
+            width: 100%;
+            height: 440px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-cozy);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-bg);
+        }
+
+        .card-front {
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--card-bg), var(--kun-bg));
+        }
+
+        .card-front .kanji-large {
+            font-size: 8.5rem;
+            font-weight: 800;
+            color: var(--primary-cafe);
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(88, 61, 46, 0.08);
+        }
+
+        .card-front .hint-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 10px;
+            background: #ffffff;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px dashed var(--accent-cozy);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            justify-content: flex-start;
+        }
+
+        /* Anki-style Study Action Buttons */
+        .srs-actions {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .srs-btn {
+            flex: 1;
+            padding: 14px 8px;
+            border-radius: 14px;
+            border: none;
+            font-family: inherit;
+            font-weight: 800;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            color: #ffffff;
+            box-shadow: var(--shadow-cozy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .srs-btn span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            opacity: 0.85;
+        }
+
+        .srs-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        .srs-btn.again { background-color: #8c4f35; } /* Reddish brown */
+        .srs-btn.hard { background-color: #b5835a; }  /* Cinnamon amber */
+        .srs-btn.good { background-color: #a85032; }  /* Spiced orange */
+        .srs-btn.easy { background-color: #5c3d2e; }  /* Espresso cocoa */
+
+        .reveal-deck-btn {
+            width: 100%;
+            background: var(--primary-cafe);
+            color: var(--bg-color);
+            border: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: var(--shadow-cozy);
+            transition: var(--transition-smooth);
+        }
+
+        .reveal-deck-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .congrats-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            padding: 50px 30px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: var(--shadow-cozy);
+            width: 100%;
+        }
+
+        .congrats-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-cafe);
+            margin-bottom: 12px;
+        }
+
+        .congrats-card p {
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="cafe-logo">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 21h18v-2H2v2M20 8h-2V5h2v3M4 19h12v-4H4v4m0-6h12v-4H4v4m14-8H2v3h16V5m2 5h-2v3h2v-3m0-7H4v2h16V3z"/>
+            </svg>
+        </div>
+        <h1>Lofi Cafe: JLPT N5 Kanji Master Guide</h1>
+        <p>Grab a warm cup of coffee and master all 103 N5 Kanji. Interactive study table with Anki SRS spaced repetition flashcards.</p>
+    </header>
+
+    <div class="nav-container">
+        <button class="nav-tab active" id="tab-dashboard" onclick="switchView('dashboard')">📋 Dashboard</button>
+        <button class="nav-tab" id="tab-study" onclick="switchView('study')">☕ Study Deck</button>
+    </div>
+
+    <!-- VIEW 1: DASHBOARD VIEW -->
+    <div id="dashboard-view">
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Filter by Kanji, English meaning, or readings (e.g. hito, one, 火)...">
+            <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+        </div>
+
+        <div id="theme-containers"></div>
+    </div>
+
+    <!-- VIEW 2: STUDY MODE VIEW -->
+    <div id="study-mode-view">
+        <div class="study-container">
+            <!-- SRS Stats -->
+            <div class="srs-stats-banner">
+                <div class="stat-box">
+                    <div class="stat-val" id="count-new">0</div>
+                    <div class="stat-lbl">New</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="count-learn" style="color: var(--on-text)">0</div>
+                    <div class="stat-lbl">Learning</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-val" id="count-due" style="color: var(--accent-cozy)">0</div>
+                    <div class="stat-lbl">Due Review</div>
+                </div>
+            </div>
+
+            <!-- Flashcard Frame -->
+            <div class="flashcard-wrapper" id="cardWrapper" onclick="flipCard()">
+                <div class="flashcard" id="studyCard">
+                    <!-- Front face -->
+                    <div class="card-face card-front">
+                        <div class="kanji-large" id="cardKanji">一</div>
+                        <div class="hint-text">💡 Click Card to Reveal Answer</div>
+                    </div>
+                    <!-- Back face (Rotated 180deg) -->
+                    <div class="card-face card-back" id="cardBackFace">
+                        <!-- Details filled dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Action Controls -->
+            <div style="width: 100%;">
+                <button class="reveal-deck-btn" id="revealBtn" onclick="flipCard()">Reveal Answer</button>
+                <div class="srs-actions" id="srsActions" style="display: none;">
+                    <button class="srs-btn again" onclick="submitSrs(0)">Again <span>&lt;1m</span></button>
+                    <button class="srs-btn hard" onclick="submitSrs(1)">Hard <span>1d</span></button>
+                    <button class="srs-btn good" onclick="submitSrs(2)">Good <span>2d</span></button>
+                    <button class="srs-btn easy" onclick="submitSrs(3)">Easy <span>4d</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Details Modal -->
+<div class="modal-overlay" id="detailModal">
+    <div class="kanji-modal">
+        <div class="modal-header">
+            <div class="modal-kanji-circle" id="modalKanji">一</div>
+            <div class="modal-title-area">
+                <h2 id="modalMeaning">One</h2>
+                <p>N5 Core Kanji</p>
+            </div>
+            <button class="modal-close-btn" id="modalClose">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-info-row">
+                <div class="info-card">
+                    <div class="info-card-title">Readings (Romaji)</div>
+                    <div class="reading-container">
+                        <span class="reading-badge kun" id="modalKun">Kun: hito-tsu</span>
+                        <span class="reading-badge on" id="modalOn">On: ichi</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">Stroke Hint</div>
+                    <div class="stroke-hint" id="modalStrokeHint">Single horizontal line.</div>
+                </div>
+            </div>
+            <div class="mnemonic-section">
+                <div class="mnemonic-title">💡 Mnemonic Interpretation</div>
+                <div class="mnemonic-text" id="modalMnemonic">Mnemonic description here.</div>
+            </div>
+            <div class="vocab-grid">
+                <div class="vocab-card simple-vocab">
+                    <div class="vocab-badge">Simple Usage (Kun'yomi)</div>
+                    <div class="vocab-jp-word" id="simpleWord">一つ</div>
+                    <div class="vocab-reading" id="simpleReading">hitotsu</div>
+                    <div class="vocab-meaning" id="simpleMeaning">one item</div>
+                    <div class="vocab-sentence-box">
+                        <span class="vocab-sentence-jp" id="simpleSentence">sentence</span>
+                        <span class="vocab-sentence-en" id="simpleSentenceEn">translation</span>
+                    </div>
+                </div>
+                <div class="vocab-card compound-vocab">
+                    <div class="vocab-badge">Compound Usage (On'yomi)</div>
+                    <div class="vocab-jp-word" id="compoundWord">一日</div>
+                    <div class="vocab-reading" id="compoundReading">ichinichi</div>
+                    <div class="vocab-meaning" id="compoundMeaning">one day</div>
+                    <div class="vocab-sentence-box">
+                        <span class="vocab-sentence-jp" id="compoundSentence">sentence</span>
+                        <span class="vocab-sentence-en" id="compoundSentenceEn">translation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 103 Kanji Database
+    const kanjiData = [
+    {
+        "kanji": "一",
+        "meaning": "One",
+        "kun": "ひと-つ (hito-tsu)",
+        "on": "イチ (ichi)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Single horizontal line from left to right.",
+        "mnemonic": "A single flat coffee stirrer or floorboard lying on a table.",
+        "simple": {
+            "word": "一つ",
+            "reading": "hitotsu",
+            "meaning": "one item",
+            "sentence": "コーヒーを一つください。",
+            "sentenceEn": "One coffee, please."
+        },
+        "compound": {
+            "word": "一日",
+            "reading": "ichinichi",
+            "meaning": "one day",
+            "sentence": "一日は二十四時間です。",
+            "sentenceEn": "One day is twenty-four hours."
+        }
+    },
+    {
+        "kanji": "二",
+        "meaning": "Two",
+        "kun": "ふた-つ (futa-tsu)",
+        "on": "ニ (ni)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top line first (shorter), then bottom line (longer).",
+        "mnemonic": "Two parallel chopsticks resting cleanly together.",
+        "simple": {
+            "word": "二つ",
+            "reading": "futatsu",
+            "meaning": "two items",
+            "sentence": "パンを二つ買いました。",
+            "sentenceEn": "I bought two buns of bread."
+        },
+        "compound": {
+            "word": "二人",
+            "reading": "futari",
+            "meaning": "two people",
+            "sentence": "私たちは二人で住んでいます。",
+            "sentenceEn": "The two of us live together."
+        }
+    },
+    {
+        "kanji": "三",
+        "meaning": "Three",
+        "kun": "みっ-つ (mit-tsu)",
+        "on": "サン (san)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top line, middle line (shortest), then bottom line (longest).",
+        "mnemonic": "Three layers in a perfect latte: milk, espresso, and foam.",
+        "simple": {
+            "word": "三つ",
+            "reading": "mittsu",
+            "meaning": "three items",
+            "sentence": "リンゴが三つあります。",
+            "sentenceEn": "There are three apples."
+        },
+        "compound": {
+            "word": "三日",
+            "reading": "mikka",
+            "meaning": "three days / 3rd day of month",
+            "sentence": "三日に日本へ来ました。",
+            "sentenceEn": "I came to Japan on the third."
+        }
+    },
+    {
+        "kanji": "四",
+        "meaning": "Four",
+        "kun": "よん / よ / みっ-つ (yon / yo)",
+        "on": "シ (shi)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Draw outer container, insert inner curved legs, close base.",
+        "mnemonic": "A square window showing internal curtains drawn to the sides.",
+        "simple": {
+            "word": "四つ",
+            "reading": "yotsu",
+            "meaning": "four items",
+            "sentence": "椅子が四つあります。",
+            "sentenceEn": "There are four chairs."
+        },
+        "compound": {
+            "word": "四月",
+            "reading": "shigatsu",
+            "meaning": "April",
+            "sentence": "四月は桜がきれいです。",
+            "sentenceEn": "In April, cherry blossoms are beautiful."
+        }
+    },
+    {
+        "kanji": "五",
+        "meaning": "Five",
+        "kun": "いつ-つ (itsu-tsu)",
+        "on": "ゴ (go)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top bar, downward stroke, central lightning bend, bottom plate.",
+        "mnemonic": "An angular, stylized number '5' drawn with straight lines.",
+        "simple": {
+            "word": "五つ",
+            "reading": "itsutsu",
+            "meaning": "five items",
+            "sentence": "みかんを五つ食べました。",
+            "sentenceEn": "I ate five mandarins."
+        },
+        "compound": {
+            "word": "五分",
+            "reading": "gofun",
+            "meaning": "5 minutes",
+            "sentence": "五分待ってください。",
+            "sentenceEn": "Please wait five more minutes."
+        }
+    },
+    {
+        "kanji": "六",
+        "meaning": "Six",
+        "kun": "むっ-つ (mut-tsu)",
+        "on": "ロク (roku)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top dot, middle broad beam, two small diagonal balance legs.",
+        "mnemonic": "A tiny coffee kettle with a lid and two little feet standing on the counter.",
+        "simple": {
+            "word": "六つ",
+            "reading": "mutsu",
+            "meaning": "six items",
+            "sentence": "卵を六つください。",
+            "sentenceEn": "Six eggs, please."
+        },
+        "compound": {
+            "word": "六日",
+            "reading": "muika",
+            "meaning": "six days / 6th day of month",
+            "sentence": "六日に友達に会います。",
+            "sentenceEn": "I will meet a friend on the sixth."
+        }
+    },
+    {
+        "kanji": "七",
+        "meaning": "Seven",
+        "kun": "なな-つ (nana-tsu)",
+        "on": "シチ (shichi)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Slightly upward slanted crossbar, sliced by a curving hook line.",
+        "mnemonic": "An upside-down, slightly tilted number 7.",
+        "simple": {
+            "word": "七つ",
+            "reading": "nanatsu",
+            "meaning": "seven items",
+            "sentence": "コップが七つ並んでいます。",
+            "sentenceEn": "Seven cups are lined up."
+        },
+        "compound": {
+            "word": "七時",
+            "reading": "shichiji",
+            "meaning": "7 o'clock",
+            "sentence": "毎朝七時に起きます。",
+            "sentenceEn": "I get up at 7 o'clock every morning."
+        }
+    },
+    {
+        "kanji": "八",
+        "meaning": "Eight",
+        "kun": "やっ-つ (yat-tsu)",
+        "on": "ハチ (hachi)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Left short sweeping stroke, right long outward slide.",
+        "mnemonic": "The slope lines of a mountain widening outwards at the base.",
+        "simple": {
+            "word": "八つ",
+            "reading": "yatsu",
+            "meaning": "eight items",
+            "sentence": "お菓子を八つ買いました。",
+            "sentenceEn": "I bought eight sweets."
+        },
+        "compound": {
+            "word": "八百屋",
+            "reading": "yaoya",
+            "meaning": "vegetable shop",
+            "sentence": "この八百屋は安いです。",
+            "sentenceEn": "This vegetable shop is cheap."
+        }
+    },
+    {
+        "kanji": "九",
+        "meaning": "Nine",
+        "kun": "ここの-つ (kokono-tsu)",
+        "on": "キュウ / ク (kyū / ku)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Left sweeping line down, hooked crossline sweeping through it.",
+        "mnemonic": "A runner curving their back to stretch after sitting for a long time.",
+        "simple": {
+            "word": "九つ",
+            "reading": "kokonotsu",
+            "meaning": "nine items",
+            "sentence": "鍵が九つ見つかりました。",
+            "sentenceEn": "Nine keys were found."
+        },
+        "compound": {
+            "word": "九月",
+            "reading": "kugatsu",
+            "meaning": "September",
+            "sentence": "九月に学校が始まります。",
+            "sentenceEn": "School starts in September."
+        }
+    },
+    {
+        "kanji": "十",
+        "meaning": "Ten",
+        "kun": "とお (too)",
+        "on": "ジュウ (jū)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Horizontal bar drawn first, then straight vertical cut down.",
+        "mnemonic": "A perfect cross sign (+) or ten fingers crossed together.",
+        "simple": {
+            "word": "十",
+            "reading": "tō / jū",
+            "meaning": "ten",
+            "sentence": "十数えてください。",
+            "sentenceEn": "Please count to ten."
+        },
+        "compound": {
+            "word": "十日",
+            "reading": "tōka",
+            "meaning": "ten days / 10th day of month",
+            "sentence": "今日は十日です。",
+            "sentenceEn": "Today is the tenth."
+        }
+    },
+    {
+        "kanji": "百",
+        "meaning": "Hundred",
+        "kun": "もも (momo)",
+        "on": "ヒャク (hyaku)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top line, small ceiling drop, followed below by the 'sun' box.",
+        "mnemonic": "A billboard displaying a '100%' satisfaction guarantee seal.",
+        "simple": {
+            "word": "百",
+            "reading": "hyaku",
+            "meaning": "hundred",
+            "sentence": "百円玉を貸してください。",
+            "sentenceEn": "Please lend me a 100-yen coin."
+        },
+        "compound": {
+            "word": "三百",
+            "reading": "sanbyaku",
+            "meaning": "300",
+            "sentence": "この本は三百円です。",
+            "sentenceEn": "This book is 300 yen."
+        }
+    },
+    {
+        "kanji": "千",
+        "meaning": "Thousand",
+        "kun": "ち (chi)",
+        "on": "セン (sen)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Slanted top crest stroke, middle cross bar, vertical drop down.",
+        "mnemonic": "The number 10 cross badge wearing an additional top slash hat.",
+        "simple": {
+            "word": "千",
+            "reading": "sen",
+            "meaning": "thousand",
+            "sentence": "折り鶴を千折りました。",
+            "sentenceEn": "I folded a thousand paper cranes."
+        },
+        "compound": {
+            "word": "千円",
+            "reading": "sen-en",
+            "meaning": "1,000 Yen",
+            "sentence": "財布に千円しかありません。",
+            "sentenceEn": "I only have 1,000 yen in my wallet."
+        }
+    },
+    {
+        "kanji": "万",
+        "meaning": "Ten Thousand",
+        "kun": "よろず (yorozu)",
+        "on": "マン / バン (man / ban)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Top bar, side hook container wall, curved cross leg inside.",
+        "mnemonic": "A person making an immense, sweeping dynamic stride into large figures.",
+        "simple": {
+            "word": "万",
+            "reading": "man",
+            "meaning": "ten thousand",
+            "sentence": "一万の位の数です。",
+            "sentenceEn": "It is the number in the ten-thousands place."
+        },
+        "compound": {
+            "word": "一万円",
+            "reading": "ichiman-en",
+            "meaning": "10,000 Yen",
+            "sentence": "一万円札をくずせますか。",
+            "sentenceEn": "Can you break a 10,000-yen bill?"
+        }
+    },
+    {
+        "kanji": "円",
+        "meaning": "Yen / Circle",
+        "kun": "まる-い (maru-i)",
+        "on": "エン (en)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Left boundary wall, top and right hanging edge, internal cross beams.",
+        "mnemonic": "A square vending cash coin slot housing currency frames.",
+        "simple": {
+            "word": "円い",
+            "reading": "marui",
+            "meaning": "round",
+            "sentence": "円いテーブルを囲みます。",
+            "sentenceEn": "We sit around a round table."
+        },
+        "compound": {
+            "word": "百円",
+            "reading": "hyaku-en",
+            "meaning": "100 Yen",
+            "sentence": "百円のノートを買いました。",
+            "sentenceEn": "I bought a 100-yen notebook."
+        }
+    },
+    {
+        "kanji": "半",
+        "meaning": "Half",
+        "kun": "なか-ば (naka-ba)",
+        "on": "ハン (han)",
+        "theme": "1. Numbers & Quantities",
+        "strokeHint": "Two small ceiling drops, two horizontal shelves, vertical line axis.",
+        "mnemonic": "An arrow cleanly cutting an item vertically straight down the center.",
+        "simple": {
+            "word": "半ば",
+            "reading": "nakaba",
+            "meaning": "middle / half way",
+            "sentence": "十月の半ばに旅行します。",
+            "sentenceEn": "I will travel in the middle of October."
+        },
+        "compound": {
+            "word": "半分",
+            "reading": "hanbun",
+            "meaning": "half",
+            "sentence": "ケーキを半分に切りました。",
+            "sentenceEn": "I cut the cake in half."
+        }
+    },
+    {
+        "kanji": "日",
+        "meaning": "Day / Sun",
+        "kun": "ひ / -び (hi / -bi)",
+        "on": "ニチ / ジツ (nichi / jitsu)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Draw outer box wall, center horizontal shelf, secure bottom base.",
+        "mnemonic": "A grid window pane with sunlight rays streaming straight out.",
+        "simple": {
+            "word": "日",
+            "reading": "hi",
+            "meaning": "sun / day",
+            "sentence": "日が沈みます。",
+            "sentenceEn": "The sun is setting."
+        },
+        "compound": {
+            "word": "日曜日",
+            "reading": "nichiyōbi",
+            "meaning": "Sunday",
+            "sentence": "日曜日が好きです。",
+            "sentenceEn": "I like Sundays."
+        }
+    },
+    {
+        "kanji": "月",
+        "meaning": "Month / Moon",
+        "kun": "つき (tsuki)",
+        "on": "ゲツ / ガツ (getsu / gatsu)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Left long curve, right box hook, insert two interior horizontal shelves.",
+        "mnemonic": "A crescent moon icon with cloud lines passing right across it.",
+        "simple": {
+            "word": "月",
+            "reading": "tsuki",
+            "meaning": "moon",
+            "sentence": "月が明るいです。",
+            "sentenceEn": "The moon is bright."
+        },
+        "compound": {
+            "word": "月曜日",
+            "reading": "getsuyōbi",
+            "meaning": "Monday",
+            "sentence": "月曜日は忙しいです。",
+            "sentenceEn": "Mondays are busy."
+        }
+    },
+    {
+        "kanji": "年",
+        "meaning": "Year",
+        "kun": "とし (toshi)",
+        "on": "ネン (nen)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top slash, horizontal lines tier, vertical anchor crossing up.",
+        "mnemonic": "A farmer harvesting grain crops throughout seasonal calendar cycles.",
+        "simple": {
+            "word": "年",
+            "reading": "toshi",
+            "meaning": "year / age",
+            "sentence": "年が明けました。",
+            "sentenceEn": "The new year has begun."
+        },
+        "compound": {
+            "word": "今年",
+            "reading": "kotoshi",
+            "meaning": "this year",
+            "sentence": "今年は日本に行きます。",
+            "sentenceEn": "I will go to Japan this year."
+        }
+    },
+    {
+        "kanji": "時",
+        "meaning": "Time / Hour",
+        "kun": "とき (toki)",
+        "on": "ジ (ji)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Left side 'sun' box, right side 'temple' character.",
+        "mnemonic": "Checking the sun dial at a quiet temple to read the time.",
+        "simple": {
+            "word": "時々",
+            "reading": "tokidoki",
+            "meaning": "sometimes",
+            "sentence": "時々カフェに行きます。",
+            "sentenceEn": "I sometimes go to a cafe."
+        },
+        "compound": {
+            "word": "一時",
+            "reading": "ichiji",
+            "meaning": "1 o'clock",
+            "sentence": "午後一時に集合します。",
+            "sentenceEn": "We will gather at 1:00 PM."
+        }
+    },
+    {
+        "kanji": "間",
+        "meaning": "Interval / Between",
+        "kun": "あいだ / ま (aida / ma)",
+        "on": "カン / ケン (kan / ken)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Outer 'gate' character, inner 'sun' box.",
+        "mnemonic": "Sunlight shining through the gap in the center of double gates.",
+        "simple": {
+            "word": "間",
+            "reading": "aida",
+            "meaning": "between",
+            "sentence": "机とベッドの間です。",
+            "sentenceEn": "It is between the desk and the bed."
+        },
+        "compound": {
+            "word": "時間",
+            "reading": "jikan",
+            "meaning": "time",
+            "sentence": "時間がありません。",
+            "sentenceEn": "I don't have time."
+        }
+    },
+    {
+        "kanji": "分",
+        "meaning": "Minute / Part",
+        "kun": "わ-かる (wa-karu)",
+        "on": "フン / ブ / プン (fun / bu / pun)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top left-right slants, bottom 'knife' symbol.",
+        "mnemonic": "A sharp knife slicing an object into parts or minutes.",
+        "simple": {
+            "word": "分かる",
+            "reading": "wakaru",
+            "meaning": "to understand",
+            "sentence": "日本語が分かりますか。",
+            "sentenceEn": "Do you understand Japanese?"
+        },
+        "compound": {
+            "word": "五分",
+            "reading": "gofun",
+            "meaning": "5 minutes",
+            "sentence": "五分待ってください。",
+            "sentenceEn": "Please wait for five minutes."
+        }
+    },
+    {
+        "kanji": "午",
+        "meaning": "Noon",
+        "kun": "うま (uma)",
+        "on": "ゴ (go)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Slanted top, top horizontal, middle horizontal, vertical line through center.",
+        "mnemonic": "A signpost casting its shadow at midday.",
+        "simple": {
+            "word": "正午",
+            "reading": "shōgo",
+            "meaning": "high noon",
+            "sentence": "正午に昼休みになります。",
+            "sentenceEn": "The lunch break starts at noon."
+        },
+        "compound": {
+            "word": "午後",
+            "reading": "gogo",
+            "meaning": "PM / Afternoon",
+            "sentence": "午後は勉強します。",
+            "sentenceEn": "I will study in the afternoon."
+        }
+    },
+    {
+        "kanji": "前",
+        "meaning": "Before / Front",
+        "kun": "まえ (mae)",
+        "on": "ゼン (zen)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top two slants, horizontal line, left vertical, right hook, bottom ticks.",
+        "mnemonic": "A boat moving forward with horns in front.",
+        "simple": {
+            "word": "前",
+            "reading": "mae",
+            "meaning": "front / before",
+            "sentence": "駅の前にいます。",
+            "sentenceEn": "I am in front of the station."
+        },
+        "compound": {
+            "word": "午前",
+            "reading": "gozen",
+            "meaning": "AM / Morning",
+            "sentence": "午前中に掃除します。",
+            "sentenceEn": "I will clean in the morning."
+        }
+    },
+    {
+        "kanji": "後",
+        "meaning": "After / Behind",
+        "kun": "のち / あと / うし-ろ (nochi / ato / ushiro)",
+        "on": "ゴ / コウ (go / kō)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Left 'step' radical, top right 'thread', bottom right 'foot' shape.",
+        "mnemonic": "Someone walking slowly step-by-step behind others.",
+        "simple": {
+            "word": "後ろ",
+            "reading": "ushiro",
+            "meaning": "behind",
+            "sentence": "私の後ろに誰かいます。",
+            "sentenceEn": "Someone is behind me."
+        },
+        "compound": {
+            "word": "後半",
+            "reading": "kōhan",
+            "meaning": "second half",
+            "sentence": "試合の後半です。",
+            "sentenceEn": "It is the second half of the game."
+        }
+    },
+    {
+        "kanji": "今",
+        "meaning": "Now",
+        "kun": "いま (ima)",
+        "on": "コン (kon)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top roof angle, horizontal tick, curving bottom line.",
+        "mnemonic": "A cozy roof sheltering a person in the present moment right now.",
+        "simple": {
+            "word": "今",
+            "reading": "ima",
+            "meaning": "now",
+            "sentence": "今、何時ですか。",
+            "sentenceEn": "What time is it now?"
+        },
+        "compound": {
+            "word": "今日",
+            "reading": "kyō",
+            "meaning": "today",
+            "sentence": "今日は天気がいいですね。",
+            "sentenceEn": "The weather is nice today, isn't it?"
+        }
+    },
+    {
+        "kanji": "週",
+        "meaning": "Week",
+        "kun": "おおむね (ōmune)",
+        "on": "シュウ (shū)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Inner 'cycle' character (box with lines), outer 'road/walking' radical.",
+        "mnemonic": "Walking down the road of life in weekly cycles.",
+        "simple": {
+            "word": "一週間",
+            "reading": "isshūkan",
+            "meaning": "one week",
+            "sentence": "一週間は七日です。",
+            "sentenceEn": "One week is seven days."
+        },
+        "compound": {
+            "word": "今週",
+            "reading": "konshū",
+            "meaning": "this week",
+            "sentence": "今週は忙しいです。",
+            "sentenceEn": "I am busy this week."
+        }
+    },
+    {
+        "kanji": "毎",
+        "meaning": "Every",
+        "kun": "つね (tsune)",
+        "on": "マイ (mai)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top drop slant, horizontal stroke, box with two dots (mother radical).",
+        "mnemonic": "A mother caring for her child every single day.",
+        "simple": {
+            "word": "毎々",
+            "reading": "maimai",
+            "meaning": "each time / frequently",
+            "sentence": "毎々お世話になります。",
+            "sentenceEn": "Thank you for your frequent support."
+        },
+        "compound": {
+            "word": "毎日",
+            "reading": "mainichi",
+            "meaning": "every day",
+            "sentence": "毎日コーヒーを喜びます。",
+            "sentenceEn": "I enjoy coffee every day."
+        }
+    },
+    {
+        "kanji": "先",
+        "meaning": "Previous / Ahead",
+        "kun": "さき (saki)",
+        "on": "セン (sen)",
+        "theme": "2. Time & Calendar",
+        "strokeHint": "Top vertical, horizontal, second horizontal, left sweep, bottom bent leg.",
+        "mnemonic": "Someone walking ahead of others, taking the first steps forward.",
+        "simple": {
+            "word": "先",
+            "reading": "saki",
+            "meaning": "ahead / destination",
+            "sentence": "お先にどうぞ。",
+            "sentenceEn": "Go ahead, please."
+        },
+        "compound": {
+            "word": "先週",
+            "reading": "senshū",
+            "meaning": "last week",
+            "sentence": "先週、本を買いました。",
+            "sentenceEn": "I bought a book last week."
+        }
+    },
+    {
+        "kanji": "山",
+        "meaning": "Mountain",
+        "kun": "やま (yama)",
+        "on": "サン (san)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Middle tall vertical, bottom box fold, right vertical.",
+        "mnemonic": "Three rocky peaks rising side-by-side into the sky.",
+        "simple": {
+            "word": "山",
+            "reading": "yama",
+            "meaning": "mountain",
+            "sentence": "あの山は高いです。",
+            "sentenceEn": "That mountain is high."
+        },
+        "compound": {
+            "word": "富士山",
+            "reading": "fujisan",
+            "meaning": "Mt. Fuji",
+            "sentence": "富士山に登りたいです。",
+            "sentenceEn": "I want to climb Mt. Fuji."
+        }
+    },
+    {
+        "kanji": "川",
+        "meaning": "River",
+        "kun": "かわ (kawa)",
+        "on": "セン (sen)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Left downward slant line, short middle line, straight right line.",
+        "mnemonic": "Three parallel streams of water flowing down a riverbed.",
+        "simple": {
+            "word": "川",
+            "reading": "kawa",
+            "meaning": "river",
+            "sentence": "川で魚を釣ります。",
+            "sentenceEn": "I catch fish in the river."
+        },
+        "compound": {
+            "word": "小川",
+            "reading": "ogawa",
+            "meaning": "brook / stream",
+            "sentence": "小川の音が聞こえます。",
+            "sentenceEn": "I can hear the sound of a brook."
+        }
+    },
+    {
+        "kanji": "土",
+        "meaning": "Soil / Earth",
+        "kun": "つち (tsuchi)",
+        "on": "ド / ト (do / to)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Upper horizontal, vertical line, longer bottom horizontal plate.",
+        "mnemonic": "A small plant seedling breaking through the ground soil.",
+        "simple": {
+            "word": "土",
+            "reading": "tsuchi",
+            "meaning": "soil / earth",
+            "sentence": "土をいじります。",
+            "sentenceEn": "I work with the soil."
+        },
+        "compound": {
+            "word": "土曜日",
+            "reading": "doyōbi",
+            "meaning": "Saturday",
+            "sentence": "土曜日に映画を見ます。",
+            "sentenceEn": "I will watch a movie on Saturday."
+        }
+    },
+    {
+        "kanji": "水",
+        "meaning": "Water",
+        "kun": "みず (mizu)",
+        "on": "スイ (sui)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Center hook line, left folded tick, right slash, right sweep.",
+        "mnemonic": "Splashes of water spraying out from a central water nozzle.",
+        "simple": {
+            "word": "水",
+            "reading": "mizu",
+            "meaning": "water",
+            "sentence": "冷たい水をください。",
+            "sentenceEn": "Cold water, please."
+        },
+        "compound": {
+            "word": "水道",
+            "reading": "suidō",
+            "meaning": "tap water / water supply",
+            "sentence": "水道が壊れました。",
+            "sentenceEn": "The water supply broke."
+        }
+    },
+    {
+        "kanji": "火",
+        "meaning": "Fire",
+        "kun": "ひ / -び (hi / -bi)",
+        "on": "カ (ka)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Left dot, right dot, sweeping left brush, right leg.",
+        "mnemonic": "A campfire sending up small sparks to the left and right.",
+        "simple": {
+            "word": "火",
+            "reading": "hi",
+            "meaning": "fire",
+            "sentence": "火をつけてください。",
+            "sentenceEn": "Please light the fire."
+        },
+        "compound": {
+            "word": "火山",
+            "reading": "kazan",
+            "meaning": "volcano",
+            "sentence": "日本には火山が多いです。",
+            "sentenceEn": "There are many volcanoes in Japan."
+        }
+    },
+    {
+        "kanji": "木",
+        "meaning": "Tree",
+        "kun": "き (ki)",
+        "on": "モク / ボク (moku / boku)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Horizontal branch, vertical trunk, left root slant, right root slant.",
+        "mnemonic": "A tree showing branches and supportive ground roots.",
+        "simple": {
+            "word": "木",
+            "reading": "ki",
+            "meaning": "tree / wood",
+            "sentence": "庭に大きな木があります。",
+            "sentenceEn": "There is a big tree in the garden."
+        },
+        "compound": {
+            "word": "木曜日",
+            "reading": "mokuyōbi",
+            "meaning": "Thursday",
+            "sentence": "木曜日にテストがあります。",
+            "sentenceEn": "There is a test on Thursday."
+        }
+    },
+    {
+        "kanji": "金",
+        "meaning": "Gold / Metal / Money",
+        "kun": "かね (kane)",
+        "on": "キン / コン (kin / kon)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Roof top, inner cross tier bars, vertical node with gold nuggets side.",
+        "mnemonic": "A mine roof sheltering raw, shining gold nuggets underneath.",
+        "simple": {
+            "word": "金",
+            "reading": "kin",
+            "meaning": "gold",
+            "sentence": "金メダルを取りました。",
+            "sentenceEn": "I won a gold medal."
+        },
+        "compound": {
+            "word": "お金",
+            "reading": "okane",
+            "meaning": "money",
+            "sentence": "お金が必要ですか。",
+            "sentenceEn": "Do you need money?"
+        }
+    },
+    {
+        "kanji": "雨",
+        "meaning": "Rain",
+        "kun": "ame",
+        "on": "ウ (u)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top line, box with vertical line, four rain drops.",
+        "mnemonic": "Raindrops falling down on the outside of a window frame.",
+        "simple": {
+            "word": "雨",
+            "reading": "ame",
+            "meaning": "rain",
+            "sentence": "雨が降っています。",
+            "sentenceEn": "It is raining."
+        },
+        "compound": {
+            "word": "大雨",
+            "reading": "ōame",
+            "meaning": "heavy rain",
+            "sentence": "大雨で電車が止まりました。",
+            "sentenceEn": "The train stopped due to heavy rain."
+        }
+    },
+    {
+        "kanji": "天",
+        "meaning": "Heaven / Sky",
+        "kun": "amatsu",
+        "on": "テン (ten)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top short horizontal, lower long horizontal, sweeping left leg, right leg.",
+        "mnemonic": "A giant person stretching their arms wide under the open sky.",
+        "simple": {
+            "word": "天の川",
+            "reading": "amanogawa",
+            "meaning": "Milky Way",
+            "sentence": "天の川が見えます。",
+            "sentenceEn": "I can see the Milky Way."
+        },
+        "compound": {
+            "word": "天気",
+            "reading": "tenki",
+            "meaning": "weather",
+            "sentence": "明日の天気はどうですか。",
+            "sentenceEn": "How is the weather tomorrow?"
+        }
+    },
+    {
+        "kanji": "気",
+        "meaning": "Spirit / Energy / Air",
+        "kun": "いき (iki)",
+        "on": "キ / ケ (ki / ke)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top slant, middle horizontal, bottom horizontal curved hook, internal cross.",
+        "mnemonic": "Steam or energy rising from a hot pot of brewing coffee.",
+        "simple": {
+            "word": "気にする",
+            "reading": "ki ni suru",
+            "meaning": "to mind / worry",
+            "sentence": "気にしないでください。",
+            "sentenceEn": "Please don't worry about it."
+        },
+        "compound": {
+            "word": "元気",
+            "reading": "genki",
+            "meaning": "healthy / active",
+            "sentence": "お元気ですか。",
+            "sentenceEn": "How are you?"
+        }
+    },
+    {
+        "kanji": "空",
+        "meaning": "Sky / Empty",
+        "kun": "そら / あ-く / から (sora / a-ku / kara)",
+        "on": "クウ (kū)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top 'roof' radical with center hole, bottom 'work' tool (工).",
+        "mnemonic": "A window in a roof looking directly out to the open sky.",
+        "simple": {
+            "word": "空",
+            "reading": "sora",
+            "meaning": "sky",
+            "sentence": "空が青いですね。",
+            "sentenceEn": "The sky is blue, isn't it?"
+        },
+        "compound": {
+            "word": "空港",
+            "reading": "kūkō",
+            "meaning": "airport",
+            "sentence": "空港へ行きます。",
+            "sentenceEn": "I am going to the airport."
+        }
+    },
+    {
+        "kanji": "花",
+        "meaning": "Flower",
+        "kun": "hana",
+        "on": "カ (ka)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top 'grass' radical, bottom 'transform/change' character.",
+        "mnemonic": "A plant seed changing and transforming into a blooming flower.",
+        "simple": {
+            "word": "花",
+            "reading": "hana",
+            "meaning": "flower",
+            "sentence": "綺麗な花を植えました。",
+            "sentenceEn": "I planted beautiful flowers."
+        },
+        "compound": {
+            "word": "花見",
+            "reading": "hanami",
+            "meaning": "cherry blossom viewing",
+            "sentence": "日曜日にお花見をします。",
+            "sentenceEn": "I will go cherry blossom viewing on Sunday."
+        }
+    },
+    {
+        "kanji": "魚",
+        "meaning": "Fish",
+        "kun": "sakana",
+        "on": "ギョ (gyo)",
+        "theme": "3. Nature & Elements",
+        "strokeHint": "Top roof angle, middle square grid body, bottom four slash fins.",
+        "mnemonic": "A fish with a pointed head, scales, and tail fin swimming.",
+        "simple": {
+            "word": "魚",
+            "reading": "sakana",
+            "meaning": "fish",
+            "sentence": "魚が好きです。",
+            "sentenceEn": "I like fish."
+        },
+        "compound": {
+            "word": "金魚",
+            "reading": "kingyo",
+            "meaning": "goldfish",
+            "sentence": "金魚を買っています。",
+            "sentenceEn": "I keep goldfish."
+        }
+    },
+    {
+        "kanji": "人",
+        "meaning": "Person",
+        "kun": "ひと (hito)",
+        "on": "ジン / ニン (jin / nin)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Left sweeping stroke, right supporting leg.",
+        "mnemonic": "A side view of a person walking forward on two legs.",
+        "simple": {
+            "word": "人",
+            "reading": "hito",
+            "meaning": "person",
+            "sentence": "あの人は誰ですか。",
+            "sentenceEn": "Who is that person?"
+        },
+        "compound": {
+            "word": "日本人",
+            "reading": "nihonjin",
+            "meaning": "Japanese person",
+            "sentence": "私は日本人ではありません。",
+            "sentenceEn": "I am not a Japanese person."
+        }
+    },
+    {
+        "kanji": "子",
+        "meaning": "Child",
+        "kun": "こ (ko)",
+        "on": "シ / ス (shi / su)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Curved top line, loop slant hook, horizontal crossbar.",
+        "mnemonic": "A baby wrapped in swaddling clothes waving its arms.",
+        "simple": {
+            "word": "子",
+            "reading": "ko",
+            "meaning": "child",
+            "sentence": "猫の子が生まれました。",
+            "sentenceEn": "Kittens were born."
+        },
+        "compound": {
+            "word": "子ども",
+            "reading": "kodomo",
+            "meaning": "child / children",
+            "sentence": "子どもたちが遊んでいます。",
+            "sentenceEn": "The children are playing."
+        }
+    },
+    {
+        "kanji": "女",
+        "meaning": "Woman",
+        "kun": "おんな (onna)",
+        "on": "ジョ (jo)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Curved left loop, horizontal cross, slant sweep.",
+        "mnemonic": "A woman kneeling gracefully or dancing.",
+        "simple": {
+            "word": "女",
+            "reading": "onna",
+            "meaning": "female / woman",
+            "sentence": "女の子が泣いています。",
+            "sentenceEn": "A girl is crying."
+        },
+        "compound": {
+            "word": "女性",
+            "reading": "josei",
+            "meaning": "woman / female sex",
+            "sentence": "女性の洋服売り場です。",
+            "sentenceEn": "It is the women's clothing department."
+        }
+    },
+    {
+        "kanji": "男",
+        "meaning": "Man",
+        "kun": "おとこ (otoko)",
+        "on": "ダン / ナン (dan / nan)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top 'rice field' box, bottom 'power' tool.",
+        "mnemonic": "A strong worker tilling the rice field using his power.",
+        "simple": {
+            "word": "男",
+            "reading": "otoko",
+            "meaning": "male / man",
+            "sentence": "男の子が走っています。",
+            "sentenceEn": "A boy is running."
+        },
+        "compound": {
+            "word": "男性",
+            "reading": "dansei",
+            "meaning": "man / male sex",
+            "sentence": "男性用の靴ですか。",
+            "sentenceEn": "Are these shoes for men?"
+        }
+    },
+    {
+        "kanji": "父",
+        "meaning": "Father",
+        "kun": "ちち (chichi)",
+        "on": "フ (fu)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top two ticks slanting outward, bottom crossing slants.",
+        "mnemonic": "A father crossing mustache hairs or sticks showing authority.",
+        "simple": {
+            "word": "父",
+            "reading": "chichi",
+            "meaning": "my father",
+            "sentence": "私の父は医者です。",
+            "sentenceEn": "My father is a doctor."
+        },
+        "compound": {
+            "word": "お父さん",
+            "reading": "otōsan",
+            "meaning": "father (polite)",
+            "sentence": "お父さんは元気ですか。",
+            "sentenceEn": "How is your father?"
+        }
+    },
+    {
+        "kanji": "母",
+        "meaning": "Mother",
+        "kun": "はは (haha)",
+        "on": "ボ (bo)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Outer border, vertical tick, central crossing bar, two inner dots.",
+        "mnemonic": "A mother holding a child close with two nursing dots.",
+        "simple": {
+            "word": "母",
+            "reading": "haha",
+            "meaning": "my mother",
+            "sentence": "私の母は教師です。",
+            "sentenceEn": "My mother is a teacher."
+        },
+        "compound": {
+            "word": "お母さん",
+            "reading": "okāsan",
+            "meaning": "mother (polite)",
+            "sentence": "お母さんの料理はおいしいです。",
+            "sentenceEn": "My mother's cooking is delicious."
+        }
+    },
+    {
+        "kanji": "友",
+        "meaning": "Friend",
+        "kun": "とも (tomo)",
+        "on": "ユウ (yū)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Slanted top line, sweeping horizontal bar, bottom crossing legs.",
+        "mnemonic": "Two friends shaking hands or walking arm-in-arm.",
+        "simple": {
+            "word": "友",
+            "reading": "tomo",
+            "meaning": "companion / friend",
+            "sentence": "友あり遠方より来たる。",
+            "sentenceEn": "A friend comes from afar."
+        },
+        "compound": {
+            "word": "友達",
+            "reading": "tomodachi",
+            "meaning": "friend",
+            "sentence": "友達とカフェで話しました。",
+            "sentenceEn": "I talked with a friend at a cafe."
+        }
+    },
+    {
+        "kanji": "手",
+        "meaning": "Hand",
+        "kun": "て (te)",
+        "on": "シュ (shu)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top left hook, middle horizontal, longer horizontal, vertical hooked spine.",
+        "mnemonic": "A hand stretching out showing fingers and wrist axis.",
+        "simple": {
+            "word": "手",
+            "reading": "te",
+            "meaning": "hand",
+            "sentence": "手を洗ってください。",
+            "sentenceEn": "Please wash your hands."
+        },
+        "compound": {
+            "word": "手紙",
+            "reading": "tegami",
+            "meaning": "letter",
+            "sentence": "手紙を書きました。",
+            "sentenceEn": "I wrote a letter."
+        }
+    },
+    {
+        "kanji": "足",
+        "meaning": "Foot / Leg",
+        "kun": "あし / ta-ru (ashi / ta-ru)",
+        "on": "ソク (soku)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top square knee box, bottom vertical and sweeping foot lines.",
+        "mnemonic": "A leg stretching from knee joint to a foot flat on the floor.",
+        "simple": {
+            "word": "足",
+            "reading": "ashi",
+            "meaning": "foot / leg",
+            "sentence": "足が痛いです。",
+            "sentenceEn": "My leg hurts."
+        },
+        "compound": {
+            "word": "一足",
+            "reading": "issoku",
+            "meaning": "one pair (of shoes)",
+            "sentence": "新しい靴を一足買いました。",
+            "sentenceEn": "I bought a pair of new shoes."
+        }
+    },
+    {
+        "kanji": "目",
+        "meaning": "Eye",
+        "kun": "め (me)",
+        "on": "モク (moku)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Left vertical, top-right border hook, two horizontal dividers.",
+        "mnemonic": "An eye rotated vertically showing iris dividers.",
+        "simple": {
+            "word": "目",
+            "reading": "me",
+            "meaning": "eye",
+            "sentence": "目が赤いです。",
+            "sentenceEn": "My eyes are red."
+        },
+        "compound": {
+            "word": "目薬",
+            "reading": "megusuri",
+            "meaning": "eye drops",
+            "sentence": "目薬をさします。",
+            "sentenceEn": "I apply eye drops."
+        }
+    },
+    {
+        "kanji": "耳",
+        "meaning": "Ear",
+        "kun": "みみ (mimi)",
+        "on": "ジ (ji)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top horizontal, left vertical, right hook, middle lines, bottom border.",
+        "mnemonic": "Outer structure of a human ear with internal folds.",
+        "simple": {
+            "word": "耳",
+            "reading": "mimi",
+            "meaning": "ear",
+            "sentence": "耳が遠いです。",
+            "sentenceEn": "I am hard of hearing."
+        },
+        "compound": {
+            "word": "耳鼻科",
+            "reading": "jibika",
+            "meaning": "ENT clinic",
+            "sentence": "耳鼻科で診てもらいました。",
+            "sentenceEn": "I had myself checked at the ENT doctor."
+        }
+    },
+    {
+        "kanji": "口",
+        "meaning": "Mouth",
+        "kun": "くち (kuchi)",
+        "on": "コウ / ク (kō / ku)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Left vertical, top-right boundary, bottom horizontal closer.",
+        "mnemonic": "A wide open mouth waiting to eat or drink.",
+        "simple": {
+            "word": "口",
+            "reading": "kuchi",
+            "meaning": "mouth",
+            "sentence": "口を開けてください。",
+            "sentenceEn": "Please open your mouth."
+        },
+        "compound": {
+            "word": "入口",
+            "reading": "iriguchi",
+            "meaning": "entrance",
+            "sentence": "入口のそばにいます。",
+            "sentenceEn": "I am near the entrance."
+        }
+    },
+    {
+        "kanji": "名",
+        "meaning": "Name",
+        "kun": "な (na)",
+        "on": "メイ / ミョウ (mei / myō)",
+        "theme": "4. People, Family & Body",
+        "strokeHint": "Top left 'evening' shape, bottom 'mouth' box.",
+        "mnemonic": "Whispering your name in the dark evening to declare yourself.",
+        "simple": {
+            "word": "名前",
+            "reading": "namae",
+            "meaning": "name",
+            "sentence": "お名前は何ですか。",
+            "sentenceEn": "What is your name?"
+        },
+        "compound": {
+            "word": "有名",
+            "reading": "yūmei",
+            "meaning": "famous",
+            "sentence": "彼は有名な作家です。",
+            "sentenceEn": "He is a famous writer."
+        }
+    },
+    {
+        "kanji": "上",
+        "meaning": "Up / Above",
+        "kun": "うえ / あ-がる (ue / a-garu)",
+        "on": "ジョウ (jō)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Vertical spine line, right directional notch, long base floor line.",
+        "mnemonic": "An arrow pointing upward above a flat ground level.",
+        "simple": {
+            "word": "上",
+            "reading": "ue",
+            "meaning": "on / above",
+            "sentence": "机の上に本があります。",
+            "sentenceEn": "There is a book on the desk."
+        },
+        "compound": {
+            "word": "上手",
+            "reading": "jōzu",
+            "meaning": "skillful / good at",
+            "sentence": "日本語がお上手ですね。",
+            "sentenceEn": "You are good at Japanese, aren't you?"
+        }
+    },
+    {
+        "kanji": "下",
+        "meaning": "Down / Below",
+        "kun": "した / sa-garu (shita / sa-garu)",
+        "on": "カ / ゲ (ka / ge)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Long top roof beam line, vertical spine drop, lower right dot notch.",
+        "mnemonic": "An anchor pointing down below an established ceiling level.",
+        "simple": {
+            "word": "下",
+            "reading": "shita",
+            "meaning": "under / below",
+            "sentence": "猫が机の下にいます。",
+            "sentenceEn": "A cat is under the desk."
+        },
+        "compound": {
+            "word": "下手",
+            "reading": "heta",
+            "meaning": "unskillful / bad at",
+            "sentence": "歌が下手です。",
+            "sentenceEn": "I am bad at singing."
+        }
+    },
+    {
+        "kanji": "左",
+        "meaning": "Left",
+        "kun": "ひだり (hidari)",
+        "on": "サ (sa)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Slanted top crest line, sweeping left bar, internal '工' tool frame.",
+        "mnemonic": "A hand holding engineering tools over toward the left side.",
+        "simple": {
+            "word": "左",
+            "reading": "hidari",
+            "meaning": "left",
+            "sentence": "左を見てください。",
+            "sentenceEn": "Please look to the left."
+        },
+        "compound": {
+            "word": "左折",
+            "reading": "sasetsu",
+            "meaning": "left turn",
+            "sentence": "次の交差点を左折します。",
+            "sentenceEn": "I will make a left turn at the next intersection."
+        }
+    },
+    {
+        "kanji": "右",
+        "meaning": "Right",
+        "kun": "migi",
+        "on": "u / yū",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Slanted top cap line, long sweeping left shield, internal '口' mouth box.",
+        "mnemonic": "A human hand bringing food items up to the mouth on the right.",
+        "simple": {
+            "word": "右",
+            "reading": "migi",
+            "meaning": "right",
+            "sentence": "右側にポストがあります。",
+            "sentenceEn": "There is a mailbox on the right side."
+        },
+        "compound": {
+            "word": "右折",
+            "reading": "usetsu",
+            "meaning": "right turn",
+            "sentence": "ここを右折してください。",
+            "sentenceEn": "Please turn right here."
+        }
+    },
+    {
+        "kanji": "中",
+        "meaning": "Middle / Inside",
+        "kun": "なか (naka)",
+        "on": "ちゅう (chū)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Draw center box element, pierce vertical arrow straight down middle.",
+        "mnemonic": "A target rod impaling right through the dead center of a box.",
+        "simple": {
+            "word": "中",
+            "reading": "naka",
+            "meaning": "inside",
+            "sentence": "箱の中を見てください。",
+            "sentenceEn": "Please look inside the box."
+        },
+        "compound": {
+            "word": "一日中",
+            "reading": "ichinichijū",
+            "meaning": "all day long",
+            "sentence": "一日中雨が降っていました。",
+            "sentenceEn": "It was raining all day long."
+        }
+    },
+    {
+        "kanji": "外",
+        "meaning": "Outside",
+        "kun": "そと / ほか (soto / hoka)",
+        "on": "がい / げ (gai / ge)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Left 'evening' shape, right katakana 'to' stroke.",
+        "mnemonic": "Walking outside to meet someone in the evening.",
+        "simple": {
+            "word": "外",
+            "reading": "soto",
+            "meaning": "outside",
+            "sentence": "外はとても寒いです。",
+            "sentenceEn": "Outside is very cold."
+        },
+        "compound": {
+            "word": "外国",
+            "reading": "gaikoku",
+            "meaning": "foreign country",
+            "sentence": "将来、外国に行きたいです。",
+            "sentenceEn": "I want to go to a foreign country in the future."
+        }
+    },
+    {
+        "kanji": "東",
+        "meaning": "East",
+        "kun": "ひがし (higashi)",
+        "on": "トウ (tō)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Horizontal line, central sun box, vertical spine, roots sweeping left/right.",
+        "mnemonic": "The sun rising directly behind a tree in the east.",
+        "simple": {
+            "word": "東",
+            "reading": "higashi",
+            "meaning": "east",
+            "sentence": "東の方角に進みます。",
+            "sentenceEn": "We will proceed toward the east."
+        },
+        "compound": {
+            "word": "東京",
+            "reading": "tōkyō",
+            "meaning": "Tokyo",
+            "sentence": "東京に住んでいます。",
+            "sentenceEn": "I live in Tokyo."
+        }
+    },
+    {
+        "kanji": "西",
+        "meaning": "West",
+        "kun": "にし (nishi)",
+        "on": "せい / さい (sei / sai)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Top line, outer boundary, internal folding curves, bottom closing line.",
+        "mnemonic": "A bird returning to its square nest as the sun sets in the west.",
+        "simple": {
+            "word": "西",
+            "reading": "nishi",
+            "meaning": "west",
+            "sentence": "西の空が赤いです。",
+            "sentenceEn": "The western sky is red."
+        },
+        "compound": {
+            "word": "西洋",
+            "reading": "seiyō",
+            "meaning": "the West / Western countries",
+            "sentence": "西洋の歴史を学びます。",
+            "sentenceEn": "I will learn about Western history."
+        }
+    },
+    {
+        "kanji": "南",
+        "meaning": "South",
+        "kun": "みなみ (minami)",
+        "on": "ナン (nan)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Top line, vertical tick, container outline, crossbar, bottom ticks.",
+        "mnemonic": "A cozy warm building in the sunny south with open windows.",
+        "simple": {
+            "word": "南",
+            "reading": "みなみ (minami)",
+            "meaning": "south",
+            "sentence": "南の島に行きたいです。",
+            "sentenceEn": "I want to go to a southern island."
+        },
+        "compound": {
+            "word": "南米",
+            "reading": "nanbei",
+            "meaning": "South America",
+            "sentence": "南米を旅行しました。",
+            "sentenceEn": "I traveled around South America."
+        }
+    },
+    {
+        "kanji": "北",
+        "meaning": "North",
+        "kun": "kita (kita)",
+        "on": "ホク (hoku)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Left vertical hook, horizontal line, right vertical, right slanted curve.",
+        "mnemonic": "Two people sitting back-to-back to block out the freezing north wind.",
+        "simple": {
+            "word": "北",
+            "reading": "kita",
+            "meaning": "north",
+            "sentence": "北から風が吹いています。",
+            "sentenceEn": "Wind is blowing from the north."
+        },
+        "compound": {
+            "word": "北海道",
+            "reading": "hokkaidō",
+            "meaning": "Hokkaido",
+            "sentence": "北海道は冬が寒いです。",
+            "sentenceEn": "Hokkaido has a cold winter."
+        }
+    },
+    {
+        "kanji": "道",
+        "meaning": "Road / Way",
+        "kun": "みち (michi)",
+        "on": "どう (dō)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Left-right top ticks, head/neck character, outer walking radical.",
+        "mnemonic": "Walking down a long road with your head held high in thoughts.",
+        "simple": {
+            "word": "道",
+            "reading": "michi",
+            "meaning": "road / path",
+            "sentence": "道で猫を見かけました。",
+            "sentenceEn": "I spotted a cat on the road."
+        },
+        "compound": {
+            "word": "茶道",
+            "reading": "sadō",
+            "meaning": "tea ceremony",
+            "sentence": "祖母は茶道を教えています。",
+            "sentenceEn": "My grandmother teaches the tea ceremony."
+        }
+    },
+    {
+        "kanji": "国",
+        "meaning": "Country",
+        "kun": "くに (kuni)",
+        "on": "こく (koku)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Outer border wall, inner 'jade/jewel' character, bottom border closer.",
+        "mnemonic": "A walled border enclosing and protecting a precious jewel (the country).",
+        "simple": {
+            "word": "国",
+            "reading": "kuni",
+            "meaning": "country",
+            "sentence": "あなたの国はどちらですか。",
+            "sentenceEn": "Where is your country?"
+        },
+        "compound": {
+            "word": "外国",
+            "reading": "gaikoku",
+            "meaning": "foreign country",
+            "sentence": "外国から手紙が来ました。",
+            "sentenceEn": "A letter came from a foreign country."
+        }
+    },
+    {
+        "kanji": "店",
+        "meaning": "Shop",
+        "kun": "みせ (mise)",
+        "on": "てん (ten)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Top canopy roof, left wall, inside 'fortune' character.",
+        "mnemonic": "A shop display under a roof canopy where customers buy items.",
+        "simple": {
+            "word": "店",
+            "reading": "mise",
+            "meaning": "shop",
+            "sentence": "あのお店はおいしいです。",
+            "sentenceEn": "That shop is delicious."
+        },
+        "compound": {
+            "word": "書店",
+            "reading": "shoten",
+            "meaning": "bookstore",
+            "sentence": "書店で漫画を買いました。",
+            "sentenceEn": "I bought manga at a bookstore."
+        }
+    },
+    {
+        "kanji": "駅",
+        "meaning": "Station",
+        "kun": "うまや (umaya)",
+        "on": "えき (eki)",
+        "theme": "5. Directions, Positions & Places",
+        "strokeHint": "Left horse radical, right reach/arrive character.",
+        "mnemonic": "The place where you park your horse when arriving at the station.",
+        "simple": {
+            "word": "駅",
+            "reading": "eki",
+            "meaning": "station",
+            "sentence": "駅で待ち合わせします。",
+            "sentenceEn": "We will meet up at the station."
+        },
+        "compound": {
+            "word": "駅前",
+            "reading": "ekimae",
+            "meaning": "in front of the station",
+            "sentence": "駅前の喫茶店へ行きます。",
+            "sentenceEn": "I will go to the cafe in front of the station."
+        }
+    },
+    {
+        "kanji": "学",
+        "meaning": "Study / Learn",
+        "kun": "まな-ぶ (mana-bu)",
+        "on": "ガク (gaku)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Three top ticks, roof hook, bottom child character.",
+        "mnemonic": "A child sitting under a classroom roof studying.",
+        "simple": {
+            "word": "学ぶ",
+            "reading": "manabu",
+            "meaning": "to learn / study",
+            "sentence": "日本語を楽しく学びます。",
+            "sentenceEn": "I learn Japanese with joy."
+        },
+        "compound": {
+            "word": "学生",
+            "reading": "gakusei",
+            "meaning": "student",
+            "sentence": "私は学生です。",
+            "sentenceEn": "I am a student."
+        }
+    },
+    {
+        "kanji": "生",
+        "meaning": "Life / Birth",
+        "kun": "い-きる / う-まれる (i-kiru / u-mareru)",
+        "on": "セイ / ショウ (sei / shō)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Slanted tick, horizontal bar, vertical stem, middle line, base line.",
+        "mnemonic": "A green plant seedling breaking through the soil, symbolizing life.",
+        "simple": {
+            "word": "生まれる",
+            "reading": "umareru",
+            "meaning": "to be born",
+            "sentence": "一九九九年に生まれました。",
+            "sentenceEn": "I was born in 1999."
+        },
+        "compound": {
+            "word": "先生",
+            "reading": "sensei",
+            "meaning": "teacher",
+            "sentence": "あの先生は優しいです。",
+            "sentenceEn": "That teacher is kind."
+        }
+    },
+    {
+        "kanji": "校",
+        "meaning": "School",
+        "kun": "かせ (kase)",
+        "on": "コウ (kō)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left tree radical, right cross/mix character.",
+        "mnemonic": "A tree where children gather to cross paths and socialize at school.",
+        "simple": {
+            "word": "校内",
+            "reading": "kōnai",
+            "meaning": "inside school",
+            "sentence": "校内は禁煙です。",
+            "sentenceEn": "Smoking is prohibited inside the school premises."
+        },
+        "compound": {
+            "word": "小学校",
+            "reading": "shōgakkō",
+            "meaning": "elementary school",
+            "sentence": "小学校に入学しました。",
+            "sentenceEn": "I entered elementary school."
+        }
+    },
+    {
+        "kanji": "会",
+        "meaning": "Meet / Society",
+        "kun": "あ-う (a-u)",
+        "on": "カイ / エ (kai / e)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top roof angle, middle horizontal line, bottom folded line.",
+        "mnemonic": "Two people gathering under a cafe roof to meet over coffee.",
+        "simple": {
+            "word": "会う",
+            "reading": "au",
+            "meaning": "to meet",
+            "sentence": "明日、友達に会います。",
+            "sentenceEn": "I will meet a friend tomorrow."
+        },
+        "compound": {
+            "word": "会社",
+            "reading": "kaisha",
+            "meaning": "company",
+            "sentence": "会社へ行きます。",
+            "sentenceEn": "I am going to the company."
+        }
+    },
+    {
+        "kanji": "社",
+        "meaning": "Company / Shrine",
+        "kun": "やしろ (yashiro)",
+        "on": "シャ (sha)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left altar/spirit radical, right soil character.",
+        "mnemonic": "A small altar built on the soil of a company or shrine grounds.",
+        "simple": {
+            "word": "社",
+            "reading": "yashiro",
+            "meaning": "shrine",
+            "sentence": "小さな社があります。",
+            "sentenceEn": "There is a small shrine."
+        },
+        "compound": {
+            "word": "社員",
+            "reading": "shain",
+            "meaning": "employee",
+            "sentence": "私は会社の社員です。",
+            "sentenceEn": "I am an employee of the company."
+        }
+    },
+    {
+        "kanji": "休",
+        "meaning": "Rest / Holiday",
+        "kun": "やす-む (yasu-mu)",
+        "on": "キュウ (kyū)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left person radical, right tree character.",
+        "mnemonic": "A tired worker leaning against a shady tree to rest.",
+        "simple": {
+            "word": "休む",
+            "reading": "yasumu",
+            "meaning": "to rest / take day off",
+            "sentence": "今日は会社を休みます。",
+            "sentenceEn": "I will take a day off from work today."
+        },
+        "compound": {
+            "word": "休日",
+            "reading": "kyūjitsu",
+            "meaning": "holiday",
+            "sentence": "休日は家でゆっくりします。",
+            "sentenceEn": "I relax at home on holidays."
+        }
+    },
+    {
+        "kanji": "行",
+        "meaning": "Go",
+        "kun": "い-く / おこな-う (i-ku / okona-u)",
+        "on": "コウ / ギョウ (kō / gyō)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left two slants, vertical line, right horizontal ticks, vertical hook.",
+        "mnemonic": "Footprints walking forward down the left and right sides of a sidewalk.",
+        "simple": {
+            "word": "行く",
+            "reading": "iku",
+            "meaning": "to go",
+            "sentence": "デパートへ行きます。",
+            "sentenceEn": "I am going to the department store."
+        },
+        "compound": {
+            "word": "旅行",
+            "reading": "ryokō",
+            "meaning": "travel / trip",
+            "sentence": "来月、旅行をします。",
+            "sentenceEn": "I will take a trip next month."
+        }
+    },
+    {
+        "kanji": "来",
+        "meaning": "Come",
+        "kun": "く-る / きた-る (ku-ru / kita-ru)",
+        "on": "ライ (rai)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Horizontal top, left slant, right slant, central tree spine, roots.",
+        "mnemonic": "A tree growing fruit, calling visitors to come and harvest it.",
+        "simple": {
+            "word": "来る",
+            "reading": "kuru",
+            "meaning": "to come",
+            "sentence": "バスが来ました。",
+            "sentenceEn": "The bus has come."
+        },
+        "compound": {
+            "word": "来年",
+            "reading": "rainen",
+            "meaning": "next year",
+            "sentence": "来年は二十才になります。",
+            "sentenceEn": "I will turn twenty next year."
+        }
+    },
+    {
+        "kanji": "出",
+        "meaning": "Exit / Go Out",
+        "kun": "で-る / だ-す (de-ru / da-su)",
+        "on": "シュツ (shutsu)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Middle vertical, top box fold, right vertical, bottom box fold, right vertical.",
+        "mnemonic": "Two mountains stacked on top of each other, pushing upward and outward.",
+        "simple": {
+            "word": "出る",
+            "reading": "deru",
+            "meaning": "to go out / leave",
+            "sentence": "家を出ました。",
+            "sentenceEn": "I left the house."
+        },
+        "compound": {
+            "word": "出口",
+            "reading": "deguchi",
+            "meaning": "exit",
+            "sentence": "出口はどこですか。",
+            "sentenceEn": "Where is the exit?"
+        }
+    },
+    {
+        "kanji": "入",
+        "meaning": "Enter / Insert",
+        "kun": "はい-る / い-れる (hai-ru / i-reru)",
+        "on": "ニュウ (nyū)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left short slant, right long sweeping stroke crossing over.",
+        "mnemonic": "A doorway opening with a welcome mat slanting inside.",
+        "simple": {
+            "word": "入る",
+            "reading": "hairu",
+            "meaning": "to enter / go in",
+            "sentence": "お風呂に入ります。",
+            "sentenceEn": "I will take a bath."
+        },
+        "compound": {
+            "word": "入口",
+            "reading": "iriguchi",
+            "meaning": "entrance",
+            "sentence": "入口で待っています。",
+            "sentenceEn": "I am waiting at the entrance."
+        }
+    },
+    {
+        "kanji": "見",
+        "meaning": "See / Look",
+        "kun": "み-る (mi-ru)",
+        "on": "ケン (ken)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top 'eye' character, bottom 'running legs' shape.",
+        "mnemonic": "An eye on legs walking around to see the sights.",
+        "simple": {
+            "word": "見る",
+            "reading": "miru",
+            "meaning": "to see / watch",
+            "sentence": "テレビを見ます。",
+            "sentenceEn": "I watch television."
+        },
+        "compound": {
+            "word": "見学",
+            "reading": "kengaku",
+            "meaning": "field trip / study tour",
+            "sentence": "工場を見学します。",
+            "sentenceEn": "We will tour the factory."
+        }
+    },
+    {
+        "kanji": "聞",
+        "meaning": "Hear / Listen",
+        "kun": "き-く (ki-ku)",
+        "on": "ブン / モン (bun / mon)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Outer 'gate' character, inner 'ear' character.",
+        "mnemonic": "Putting your ear to the keyhole of a gate to hear what's inside.",
+        "simple": {
+            "word": "聞く",
+            "reading": "kiku",
+            "meaning": "to hear / listen / ask",
+            "sentence": "音楽を聞いています。",
+            "sentenceEn": "I am listening to music."
+        },
+        "compound": {
+            "word": "新聞",
+            "reading": "shinbun",
+            "meaning": "newspaper",
+            "sentence": "毎朝新聞を読みます。",
+            "sentenceEn": "I read the newspaper every morning."
+        }
+    },
+    {
+        "kanji": "書",
+        "meaning": "Write",
+        "kun": "か-く (ka-ru)",
+        "on": "ショ (sho)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top horizontal lines, vertical stroke, middle divider, bottom 'sun' box.",
+        "mnemonic": "A hand holding a writing brush over an inkwell to write down notes.",
+        "simple": {
+            "word": "書く",
+            "reading": "kaku",
+            "meaning": "to write",
+            "sentence": "日記を書きます。",
+            "sentenceEn": "I write in a diary."
+        },
+        "compound": {
+            "word": "辞書",
+            "reading": "jisho",
+            "meaning": "dictionary",
+            "sentence": "辞書を引いてください。",
+            "sentenceEn": "Please check the dictionary."
+        }
+    },
+    {
+        "kanji": "読",
+        "meaning": "Read",
+        "kun": "よ-mu",
+        "on": "どく",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left 'speech/word' radical, right 'sell/market' shape.",
+        "mnemonic": "Reading words aloud from books sold at a local library store.",
+        "simple": {
+            "word": "読む",
+            "reading": "yomu",
+            "meaning": "to read",
+            "sentence": "本を読みます。",
+            "sentenceEn": "I read books."
+        },
+        "compound": {
+            "word": "読書",
+            "reading": "dokusho",
+            "meaning": "reading books",
+            "sentence": "秋は読書に最適です。",
+            "sentenceEn": "Autumn is the best time for reading."
+        }
+    },
+    {
+        "kanji": "話",
+        "meaning": "Talk / Speak",
+        "kun": "はな-す / はなし (hana-su / hanashi)",
+        "on": "ワ (wa)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left 'speech/word' radical, right 'tongue' character.",
+        "mnemonic": "Using your tongue to speak words and talk with your friends.",
+        "simple": {
+            "word": "話す",
+            "reading": "hanasu",
+            "meaning": "to speak / talk",
+            "sentence": "英語で話してください。",
+            "sentenceEn": "Please speak in English."
+        },
+        "compound": {
+            "word": "電話",
+            "reading": "denwa",
+            "meaning": "telephone",
+            "sentence": "電話をかけています。",
+            "sentenceEn": "I am making a telephone call."
+        }
+    },
+    {
+        "kanji": "語",
+        "meaning": "Language / Word",
+        "kun": "かた-る (kata-ru)",
+        "on": "ゴ (go)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left 'speech/word', right top 'five', right bottom 'mouth' (口).",
+        "mnemonic": "Speaking five different languages with your mouth.",
+        "simple": {
+            "word": "語る",
+            "reading": "kataru",
+            "meaning": "to tell / narrate",
+            "sentence": "昔話を語ります。",
+            "sentenceEn": "I will tell a folk story."
+        },
+        "compound": {
+            "word": "日本語",
+            "reading": "nihongo",
+            "meaning": "Japanese language",
+            "sentence": "日本語は面白いです。",
+            "sentenceEn": "Japanese is interesting."
+        }
+    },
+    {
+        "kanji": "言",
+        "meaning": "Say / Word",
+        "kun": "い-u / koto",
+        "on": "gen / gon",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top dot, three horizontal lines, bottom 'mouth' box.",
+        "mnemonic": "Waves of sound escaping from a mouth as someone starts to say something.",
+        "simple": {
+            "word": "言う",
+            "reading": "iu",
+            "meaning": "to say",
+            "sentence": "「ありがとう」と言いました。",
+            "sentenceEn": "I said 'thank you'."
+        },
+        "compound": {
+            "word": "言葉",
+            "reading": "kotoba",
+            "meaning": "words / language",
+            "sentence": "言葉に気を付けてください。",
+            "sentenceEn": "Please watch your language."
+        }
+    },
+    {
+        "kanji": "買",
+        "meaning": "Buy",
+        "kun": "か-う (ka-u)",
+        "on": "バイ (bai)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top 'net' box (like eye with cross lines), bottom 'shell/money' character (貝).",
+        "mnemonic": "Spreading a net to gather shells, which were ancient currency used to buy items.",
+        "simple": {
+            "word": "買う",
+            "reading": "kau",
+            "meaning": "to buy",
+            "sentence": "服を買いました。",
+            "sentenceEn": "I bought clothes."
+        },
+        "compound": {
+            "word": "買い物",
+            "reading": "kaimono",
+            "meaning": "shopping",
+            "sentence": "デパートへ買い物に行きます。",
+            "sentenceEn": "I will go shopping at the department store."
+        }
+    },
+    {
+        "kanji": "食",
+        "meaning": "Eat",
+        "kun": "た-べる / ku-u (ta-beru)",
+        "on": "ショク (shoku)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top roof angle, horizontal line, bottom container with dot.",
+        "mnemonic": "Gathering under a roof to enjoy a delicious warm meal.",
+        "simple": {
+            "word": "食べる",
+            "reading": "taberu",
+            "meaning": "to eat",
+            "sentence": "朝ご飯を食べましたか。",
+            "sentenceEn": "Did you eat breakfast?"
+        },
+        "compound": {
+            "word": "食堂",
+            "reading": "shokudō",
+            "meaning": "cafeteria / dining room",
+            "sentence": "食堂は二階にあります。",
+            "sentenceEn": "The cafeteria is on the second floor."
+        }
+    },
+    {
+        "kanji": "飲",
+        "meaning": "Drink",
+        "kun": "の-む (nomu)",
+        "on": "イン (in)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Left 'food' radical, right 'yawn' character.",
+        "mnemonic": "Eating food and then yawning, wanting a refreshing drink to wash it down.",
+        "simple": {
+            "word": "飲む",
+            "reading": "nomu",
+            "meaning": "to drink",
+            "sentence": "お茶を飲みます。",
+            "sentenceEn": "I will drink tea."
+        },
+        "compound": {
+            "word": "飲み物",
+            "reading": "nomimono",
+            "meaning": "beverage / drink",
+            "sentence": "冷たい飲み物はいかがですか。",
+            "sentenceEn": "Would you like a cold drink?"
+        }
+    },
+    {
+        "kanji": "立",
+        "meaning": "Stand",
+        "kun": "た-つ (ta-tsu)",
+        "on": "リツ (ritsu)",
+        "theme": "6. Verbs & Actions",
+        "strokeHint": "Top horizontal dot, horizontal bar, two vertical legs, longer base line.",
+        "mnemonic": "A person standing firmly upright on the floorboards of the room.",
+        "simple": {
+            "word": "立つ",
+            "reading": "tatsu",
+            "meaning": "to stand up",
+            "sentence": "ドアのそばに立ちます。",
+            "sentenceEn": "I stand near the door."
+        },
+        "compound": {
+            "word": "起立",
+            "reading": "kiritsu",
+            "meaning": "standing up",
+            "sentence": "号令で起立します。",
+            "sentenceEn": "We stand up at the command."
+        }
+    },
+    {
+        "kanji": "大",
+        "meaning": "Big / Large",
+        "kun": "おお-きい (oo-kii)",
+        "on": "ダイ / タイ (dai / tai)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Horizontal branch, long left-slanted sweep, right leg.",
+        "mnemonic": "A person spreading their arms and legs as wide as possible to show size.",
+        "simple": {
+            "word": "大きい",
+            "reading": "ōkii",
+            "meaning": "big / large",
+            "sentence": "大きい犬が吠えています。",
+            "sentenceEn": "A large dog is barking."
+        },
+        "compound": {
+            "word": "大好き",
+            "reading": "daisuki",
+            "meaning": "like very much / love",
+            "sentence": "私はアニメが大好きです。",
+            "sentenceEn": "I love anime."
+        }
+    },
+    {
+        "kanji": "小",
+        "meaning": "Small",
+        "kun": "ちい-さい / こ- / お- (chii-sai / ko- / o-)",
+        "on": "ショウ (shō)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Center hook line, left dot, right dot.",
+        "mnemonic": "A small plant sprout with two tiny leaves on the left and right.",
+        "simple": {
+            "word": "小さい",
+            "reading": "chiisai",
+            "meaning": "small",
+            "sentence": "小さいカバンを買いました。",
+            "sentenceEn": "I bought a small bag."
+        },
+        "compound": {
+            "word": "小学校",
+            "reading": "shōgakkō",
+            "meaning": "elementary school",
+            "sentence": "小学校に入りました。",
+            "sentenceEn": "I entered elementary school."
+        }
+    },
+    {
+        "kanji": "高",
+        "meaning": "High / Expensive",
+        "kun": "たか-い (taka-i)",
+        "on": "コウ (kō)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top dot-line roof, outer box, inner mouth box, bottom boundary.",
+        "mnemonic": "A high tower or multi-story castle rising high above the ground.",
+        "simple": {
+            "word": "高い",
+            "reading": "takai",
+            "meaning": "high / expensive",
+            "sentence": "この本は高いです。",
+            "sentenceEn": "This book is expensive."
+        },
+        "compound": {
+            "word": "高校",
+            "reading": "kōkō",
+            "meaning": "high school",
+            "sentence": "弟は高校に通っています。",
+            "sentenceEn": "My younger brother goes to high school."
+        }
+    },
+    {
+        "kanji": "安",
+        "meaning": "Cheap / Safe / Peace",
+        "kun": "やす-い (yasu-i)",
+        "on": "アン (an)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top 'roof' radical, bottom 'woman' character.",
+        "mnemonic": "A woman resting peacefully inside her home under a safe, secure roof.",
+        "simple": {
+            "word": "安い",
+            "reading": "yasui",
+            "meaning": "cheap",
+            "sentence": "このカメラは安かったです。",
+            "sentenceEn": "This camera was cheap."
+        },
+        "compound": {
+            "word": "安全",
+            "reading": "anzen",
+            "meaning": "safety / security",
+            "sentence": "安全な場所へ逃げてください。",
+            "sentenceEn": "Please escape to a safe place."
+        }
+    },
+    {
+        "kanji": "新",
+        "meaning": "New",
+        "kun": "あたら-しい (atara-shii)",
+        "on": "シン (shin)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Left side stand + tree characters, right side axe radical.",
+        "mnemonic": "Chopping down a fresh standing tree with an axe to get new timber.",
+        "simple": {
+            "word": "新しい",
+            "reading": "atarashii",
+            "meaning": "new",
+            "sentence": "新しい車を買いました。",
+            "sentenceEn": "I bought a new car."
+        },
+        "compound": {
+            "word": "新幹線",
+            "reading": "shinkansen",
+            "meaning": "bullet train",
+            "sentence": "新幹線で京都に行きます。",
+            "sentenceEn": "I will go to Kyoto by bullet train."
+        }
+    },
+    {
+        "kanji": "古",
+        "meaning": "Old",
+        "kun": "ふる-い (furu-i)",
+        "on": "コ (ko)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top ten cross, bottom mouth box.",
+        "mnemonic": "A story passed down through ten generations of mouths, making it old.",
+        "simple": {
+            "word": "古い",
+            "reading": "furui",
+            "meaning": "old",
+            "sentence": "古い本を売りました。",
+            "sentenceEn": "I sold old books."
+        },
+        "compound": {
+            "word": "中古車",
+            "reading": "chukosha",
+            "meaning": "used car",
+            "sentence": "中古車を買いました。",
+            "sentenceEn": "I bought a used car."
+        }
+    },
+    {
+        "kanji": "長",
+        "meaning": "Long / Chief",
+        "kun": "なが-い (naga-i)",
+        "on": "チョウ (chō)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top horizontal, vertical, multiple horizontal lines, bottom sweeping legs.",
+        "mnemonic": "A leader with long flowing hair standing proud.",
+        "simple": {
+            "word": "長い",
+            "reading": "nagai",
+            "meaning": "long",
+            "sentence": "彼女は髪が長いです。",
+            "sentenceEn": "She has long hair."
+        },
+        "compound": {
+            "word": "校長",
+            "reading": "kōchō",
+            "meaning": "school principal",
+            "sentence": "校長先生の話を聞きます。",
+            "sentenceEn": "We listen to the school principal."
+        }
+    },
+    {
+        "kanji": "多",
+        "meaning": "Many / Much",
+        "kun": "おお-い (oo-i)",
+        "on": "タ (ta)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top 'evening' shape, bottom matching 'evening' shape.",
+        "mnemonic": "Many evenings stacked on top of each other, representing many nights.",
+        "simple": {
+            "word": "多い",
+            "reading": "ōi",
+            "meaning": "many",
+            "sentence": "この公園には花が多いです。",
+            "sentenceEn": "There are many flowers in this park."
+        },
+        "compound": {
+            "word": "多分",
+            "reading": "tabun",
+            "meaning": "probably / maybe",
+            "sentence": "明日は多分晴れるでしょう。",
+            "sentenceEn": "It will probably be sunny tomorrow."
+        }
+    },
+    {
+        "kanji": "少",
+        "meaning": "Few / Little",
+        "kun": "すく-ない / すこ-し (suku-nai / suko-shi)",
+        "on": "ショウ (shō)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "The 'small' character (小) with an additional slash tick at the bottom.",
+        "mnemonic": "Slicing a small object further to make it very small or few in quantity.",
+        "simple": {
+            "word": "少し",
+            "reading": "sukoshi",
+            "meaning": "a little",
+            "sentence": "少し日本語が話せます。",
+            "sentenceEn": "I can speak a little Japanese."
+        },
+        "compound": {
+            "word": "少量",
+            "reading": "shōryō",
+            "meaning": "small amount",
+            "sentence": "調味料を少量加えます。",
+            "sentenceEn": "Add a small amount of seasoning."
+        }
+    },
+    {
+        "kanji": "白",
+        "meaning": "White",
+        "kun": "しろ-い (shiro-i)",
+        "on": "ハク / ビャク (haku / byaku)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top drop slant, bottom 'sun' box.",
+        "mnemonic": "A single ray of bright white light shining down from the sun.",
+        "simple": {
+            "word": "白い",
+            "reading": "shiroi",
+            "meaning": "white",
+            "sentence": "白いシャツを着ています。",
+            "sentenceEn": "I am wearing a white shirt."
+        },
+        "compound": {
+            "word": "白夜",
+            "reading": "byakuya",
+            "meaning": "white night / midnight sun",
+            "sentence": "北欧で白夜を見ました。",
+            "sentenceEn": "I saw the midnight sun in Northern Europe."
+        }
+    },
+    {
+        "kanji": "車",
+        "meaning": "Car / Wheel",
+        "kun": "くるま (kuruma)",
+        "on": "シャ (sha)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top horizontal, middle square wheel hub, bottom horizontal, central vertical axle.",
+        "mnemonic": "A top-down view of a carriage with wheels and a central axle.",
+        "simple": {
+            "word": "車",
+            "reading": "kuruma",
+            "meaning": "car / wheel",
+            "sentence": "車を洗っています。",
+            "sentenceEn": "I am washing the car."
+        },
+        "compound": {
+            "word": "電車",
+            "reading": "densha",
+            "meaning": "train",
+            "sentence": "電車で会社に行きます。",
+            "sentenceEn": "I go to the company by train."
+        }
+    },
+    {
+        "kanji": "電",
+        "meaning": "Electricity",
+        "kun": "いなずま (inazuma)",
+        "on": "デン (den)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Top 'rain' character, bottom 'lightning hook' tail.",
+        "mnemonic": "Lightning sparking down from dark rain clouds, producing electricity.",
+        "simple": {
+            "word": "電気",
+            "reading": "denki",
+            "meaning": "electricity / light",
+            "sentence": "部屋の電気をつけてください。",
+            "sentenceEn": "Please turn on the light in the room."
+        },
+        "compound": {
+            "word": "電話",
+            "reading": "denwa",
+            "meaning": "telephone",
+            "sentence": "友達と電話で話しました。",
+            "sentenceEn": "I talked to my friend on the phone."
+        }
+    },
+    {
+        "kanji": "何",
+        "meaning": "What",
+        "kun": "なに / なん (nani / nan)",
+        "on": "カ (ka)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "Left person radical, right side lip + mouth hook.",
+        "mnemonic": "A person carrying a sack on their shoulder, asking 'What is in here?'.",
+        "simple": {
+            "word": "何",
+            "reading": "nani",
+            "meaning": "what",
+            "sentence": "それは何ですか。",
+            "sentenceEn": "What is that?"
+        },
+        "compound": {
+            "word": "何時",
+            "reading": "nanji",
+            "meaning": "what time",
+            "sentence": "今何時ですか。",
+            "sentenceEn": "What time is it now?"
+        }
+    },
+    {
+        "kanji": "本",
+        "meaning": "Book / Origin",
+        "kun": "moto (moto)",
+        "on": "ホン (hon)",
+        "theme": "7. Adjectives & Descriptions",
+        "strokeHint": "The tree character (木) with an additional horizontal line marking the root.",
+        "mnemonic": "Tree roots showing the origin of paper, which is used to print books.",
+        "simple": {
+            "word": "本",
+            "reading": "hon",
+            "meaning": "book",
+            "sentence": "この本を読みました。",
+            "sentenceEn": "I read this book."
+        },
+        "compound": {
+            "word": "日本語",
+            "reading": "nihongo",
+            "meaning": "Japanese language",
+            "sentence": "日本語を勉強しています。",
+            "sentenceEn": "I am studying Japanese."
+        }
+    }
+];
+
+    const themes = [
+        "1. Numbers & Quantities",
+        "2. Time & Calendar",
+        "3. Nature & Elements",
+        "4. People, Family & Body",
+        "5. Directions, Positions & Places",
+        "6. Verbs & Actions",
+        "7. Adjectives & Descriptions"
+    ];
+
+    const themeIcons = {
+        "1. Numbers & Quantities": "☕",
+        "2. Time & Calendar": "🕰️",
+        "3. Nature & Elements": "🌿",
+        "4. People, Family & Body": "👥",
+        "5. Directions, Positions & Places": "🧭",
+        "6. Verbs & Actions": "📝",
+        "7. Adjectives & Descriptions": "🎨"
+    };
+
+    // Client-side SRS Storage
+    let srsState = {};
+    const STORAGE_KEY = "lofi_cafe_srs_data";
+
+    function loadSrsData() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            srsState = JSON.parse(stored);
+        } else {
+            srsState = {};
+        }
+        // Initialize state for any missing kanji
+        kanjiData.forEach(k => {
+            if (!srsState[k.kanji]) {
+                srsState[k.kanji] = {
+                    state: "new",          // new | learning | review | mastered
+                    ease: 2.5,
+                    interval: 0,           // in days
+                    repetitions: 0,
+                    nextReview: 0          // timestamp
+                };
+            }
+        });
+        saveSrsData();
+    }
+
+    function saveSrsData() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(srsState));
+    }
+
+    function getBeanBadge(kanji) {
+        const state = srsState[kanji]?.state || "new";
+        if (state === "new") return `<span class="bean-badge srs-new">🫘 New</span>`;
+        if (state === "learning") return `<span class="bean-badge srs-learn">☕ Learn</span>`;
+        return `<span class="bean-badge srs-master">🏆 Master</span>`;
+    }
+
+    // Switch View Controller
+    function switchView(viewName) {
+        const dashboardView = document.getElementById("dashboard-view");
+        const studyView = document.getElementById("study-mode-view");
+        const tabDashboard = document.getElementById("tab-dashboard");
+        const tabStudy = document.getElementById("tab-study");
+
+        if (viewName === "dashboard") {
+            dashboardView.style.display = "block";
+            studyView.style.display = "none";
+            tabDashboard.classList.add("active");
+            tabStudy.classList.remove("active");
+            renderDashboard(); // refresh badges
+        } else {
+            dashboardView.style.display = "none";
+            studyView.style.display = "block";
+            tabDashboard.classList.remove("active");
+            tabStudy.classList.add("active");
+            startStudySession();
+        }
+    }
+
+    // Render Dashboard
+    function renderDashboard() {
+        const container = document.getElementById("theme-containers");
+        container.innerHTML = ""; // Clear existing
+
+        themes.forEach(theme => {
+            const themeKanji = kanjiData.filter(k => k.theme === theme);
+            if (themeKanji.length === 0) return;
+
+            const section = document.createElement("div");
+            section.className = "theme-section";
+
+            const title = document.createElement("h2");
+            title.className = "theme-title";
+            title.innerHTML = `${themeIcons[theme] || "📔"} ${theme}`;
+            section.appendChild(title);
+
+            const responsiveDiv = document.createElement("div");
+            responsiveDiv.className = "table-responsive";
+
+            const table = document.createElement("table");
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Kanji</th>
+                        <th>Meaning</th>
+                        <th>Readings (Romaji)</th>
+                        <th>Stroke Hint</th>
+                        <th>Visual Memory Mnemonic</th>
+                        <th>Contextual Example</th>
+                    </tr>
+                </thead>
+                <tbody class="kanji-table-body"></tbody>
+            `;
+
+            const tbody = table.querySelector("tbody");
+            themeKanji.forEach(k => {
+                const tr = document.createElement("tr");
+                tr.dataset.kanji = k.kanji;
+                tr.addEventListener("click", () => openModal(k));
+
+                tr.innerHTML = `
+                    <td>
+                        <div class="kanji-col-container">
+                            <span class="kanji-col">${k.kanji}</span>
+                            ${getBeanBadge(k.kanji)}
+                        </div>
+                    </td>
+                    <td><span class="meaning-tag">${k.meaning}</span></td>
+                    <td>
+                        <div class="reading-container">
+                            <span class="reading-badge kun">${k.kun.startsWith("Kun:") ? k.kun : "Kun: " + k.kun}</span>
+                            <span class="reading-badge on">${k.on.startsWith("On:") ? k.on : "On: " + k.on}</span>
+                        </div>
+                    </td>
+                    <td class="stroke-hint">${k.strokeHint}</td>
+                    <td class="interpretation-text">${k.mnemonic}</td>
+                    <td>
+                        <div class="example-box">
+                            <span class="example-jp">${k.compound.word} (${k.compound.reading})</span>
+                            <span class="example-en">${k.compound.meaning}</span>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            responsiveDiv.appendChild(table);
+            section.appendChild(responsiveDiv);
+            container.appendChild(section);
+        });
+    }
+
+    // Modal Interaction
+    const modal = document.getElementById("detailModal");
+    const modalClose = document.getElementById("modalClose");
+
+    function openModal(k) {
+        document.getElementById("modalKanji").innerText = k.kanji;
+        document.getElementById("modalMeaning").innerText = k.meaning;
+        document.getElementById("modalKun").innerText = k.kun.startsWith("Kun:") ? k.kun : "Kun: " + k.kun;
+        document.getElementById("modalOn").innerText = k.on.startsWith("On:") ? k.on : "On: " + k.on;
+        document.getElementById("modalStrokeHint").innerText = k.strokeHint;
+        document.getElementById("modalMnemonic").innerText = k.mnemonic;
+
+        // Simple Vocab
+        document.getElementById("simpleWord").innerText = k.simple.word;
+        document.getElementById("simpleReading").innerText = k.simple.reading;
+        document.getElementById("simpleMeaning").innerText = k.simple.meaning;
+        document.getElementById("simpleSentence").innerText = k.simple.sentence;
+        document.getElementById("simpleSentenceEn").innerText = k.simple.sentenceEn;
+
+        // Compound Vocab
+        document.getElementById("compoundWord").innerText = k.compound.word;
+        document.getElementById("compoundReading").innerText = k.compound.reading;
+        document.getElementById("compoundMeaning").innerText = k.compound.meaning;
+        document.getElementById("compoundSentence").innerText = k.compound.sentence;
+        document.getElementById("compoundSentenceEn").innerText = k.compound.sentenceEn;
+
+        modal.classList.add("active");
+    }
+
+    function closeModal() {
+        modal.classList.remove("active");
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", function(e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
+
+    // SEARCH FILTER
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        const query = this.value.toLowerCase().trim();
+        const rows = document.querySelectorAll('.kanji-table-body tr');
+
+        rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            if (text.includes(query)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // Hide empty sections
+        document.querySelectorAll('.theme-section').forEach(section => {
+            const visibleRows = section.querySelectorAll('.kanji-table-body tr:not([style*="display: none"])');
+            if (visibleRows.length === 0) {
+                section.style.display = 'none';
+            } else {
+                section.style.display = '';
+            }
+        });
+    });
+
+    // SRS STUDY SESSION CONTROLLER
+    let studyQueue = [];
+    let currentStudyItem = null;
+    let isFlipped = false;
+
+    function startStudySession() {
+        loadSrsData();
+        const now = Date.now();
+
+        // Calculate counts
+        let countNew = 0;
+        let countLearn = 0;
+        let countDue = 0;
+
+        studyQueue = [];
+
+        kanjiData.forEach(k => {
+            const record = srsState[k.kanji];
+            if (record.state === "new") {
+                countNew++;
+            } else if (record.state === "learning") {
+                countLearn++;
+            } else if (record.state === "review" || record.state === "mastered") {
+                if (record.nextReview <= now) {
+                    countDue++;
+                }
+            }
+
+            // Cards eligible for study queue: due reviews first, then learning cards, then a small batch of new cards
+            if (record.state === "learning" && record.nextReview <= now) {
+                studyQueue.push(k);
+            } else if ((record.state === "review" || record.state === "mastered") && record.nextReview <= now) {
+                studyQueue.push(k);
+            }
+        });
+
+        // If no reviews due, load up to 5 new cards
+        if (studyQueue.length === 0) {
+            const newCards = kanjiData.filter(k => srsState[k.kanji].state === "new").slice(0, 5);
+            studyQueue.push(...newCards);
+        }
+
+        // Shuffle queue slightly to mix them
+        studyQueue.sort(() => 0.5 - Math.random());
+
+        document.getElementById("count-new").innerText = countNew;
+        document.getElementById("count-learn").innerText = countLearn;
+        document.getElementById("count-due").innerText = countDue;
+
+        loadNextCard();
+    }
+
+    function loadNextCard() {
+        isFlipped = false;
+        document.getElementById("studyCard").classList.remove("flipped");
+        document.getElementById("revealBtn").style.display = "block";
+        document.getElementById("srsActions").style.display = "none";
+
+        if (studyQueue.length === 0) {
+            showCongratsView();
+            return;
+        }
+
+        currentStudyItem = studyQueue[0];
+        document.getElementById("cardKanji").innerText = currentStudyItem.kanji;
+
+        // Build Card Backface details
+        const back = document.getElementById("cardBackFace");
+        back.innerHTML = `
+            <div class="modal-header" style="padding: 15px 0 10px 0; border-bottom: 2px solid var(--border-color);">
+                <div class="modal-kanji-circle" style="width: 70px; height: 70px; font-size: 2.8rem; border-radius: 12px; margin-right: 15px;">${currentStudyItem.kanji}</div>
+                <div class="modal-title-area">
+                    <h2 style="font-size: 1.4rem;">${currentStudyItem.meaning}</h2>
+                    <p style="font-size: 0.8rem;">Visual study card</p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px; max-height: 290px; overflow-y: auto; padding-right: 5px;">
+                <div class="modal-info-row" style="grid-template-columns: 1fr;">
+                    <div class="info-card" style="padding: 8px 12px;">
+                        <div class="info-card-title" style="margin-bottom: 4px; font-size: 0.7rem;">Readings</div>
+                        <div style="font-size: 0.9rem; font-weight: 700;">
+                            <span style="color: var(--kun-text); margin-right: 10px;">${currentStudyItem.kun}</span>
+                            <span style="color: var(--on-text);">${currentStudyItem.on}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mnemonic-section" style="margin: 0;">
+                    <div class="mnemonic-title" style="font-size: 0.85rem;">💡 Mnemonic</div>
+                    <div class="mnemonic-text" style="font-size: 0.85rem; line-height: 1.4;">${currentStudyItem.mnemonic}</div>
+                </div>
+                <div class="vocab-grid" style="gap: 10px;">
+                    <div class="vocab-card simple-vocab" style="padding: 10px;">
+                        <div class="vocab-badge" style="font-size: 0.65rem; margin-bottom: 4px;">Simple</div>
+                        <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.simple.word} (${currentStudyItem.simple.reading})</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">${currentStudyItem.simple.meaning}</div>
+                    </div>
+                    <div class="vocab-card compound-vocab" style="padding: 10px;">
+                        <div class="vocab-badge" style="font-size: 0.65rem; margin-bottom: 4px;">Compound</div>
+                        <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.compound.word} (${currentStudyItem.compound.reading})</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">${currentStudyItem.compound.meaning}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function flipCard() {
+        if (isFlipped) return;
+        isFlipped = true;
+        document.getElementById("studyCard").classList.add("flipped");
+        document.getElementById("revealBtn").style.display = "none";
+        document.getElementById("srsActions").style.display = "flex";
+    }
+
+    function submitSrs(quality) {
+        if (!currentStudyItem) return;
+        const kanji = currentStudyItem.kanji;
+        const record = srsState[kanji];
+
+        // SM-2 Spaced Repetition Scheduling Algorithm
+        if (quality === 0) { // AGAIN: forgot card
+            record.repetitions = 0;
+            record.interval = 0.01; // review again in ~15 mins
+            record.ease = Math.max(1.3, record.ease - 0.2);
+            record.state = "learning";
+        } else if (quality === 1) { // HARD
+            record.repetitions = Math.max(1, record.repetitions);
+            record.interval = record.repetitions === 1 ? 1 : record.interval * 1.2;
+            record.ease = Math.max(1.3, record.ease - 0.15);
+            record.state = "learning";
+        } else if (quality === 2) { // GOOD
+            if (record.repetitions === 0) {
+                record.interval = 1;
+            } else if (record.repetitions === 1) {
+                record.interval = 3;
+            } else {
+                record.interval = record.interval * record.ease;
+            }
+            record.repetitions++;
+            record.state = "review";
+        } else if (quality === 3) { // EASY
+            if (record.repetitions === 0) {
+                record.interval = 4;
+            } else if (record.repetitions === 1) {
+                record.interval = 6;
+            } else {
+                record.interval = record.interval * record.ease * 1.3;
+            }
+            record.repetitions++;
+            record.ease += 0.15;
+            record.state = "mastered";
+        }
+
+        // Set next review timestamp
+        record.nextReview = Date.now() + record.interval * 24 * 60 * 60 * 1000;
+        saveSrsData();
+
+        // Remove from current session queue
+        studyQueue.shift();
+
+        // Refresh banner metrics
+        startStudySession();
+    }
+
+    function showCongratsView() {
+        const back = document.getElementById("cardBackFace");
+        document.getElementById("studyCard").classList.remove("flipped");
+        document.getElementById("revealBtn").style.display = "none";
+        document.getElementById("srsActions").style.display = "none";
+
+        const front = document.querySelector(".card-front");
+        front.innerHTML = `
+            <div class="congrats-card">
+                <h3>☕ All Cups Cleared!</h3>
+                <p>You have reviewed all due Kanji cards. Take a coffee break or relax with lofi beats!</p>
+                <button class="reveal-deck-btn" style="width: auto; padding: 12px 24px;" onclick="resetStudyMode()">Study Batch of New Cards</button>
+            </div>
+        `;
+    }
+
+    function resetStudyMode() {
+        // Force inject a batch of 5 new cards if possible
+        loadSrsData();
+        const front = document.querySelector(".card-front");
+        // Restore default card front layout
+        front.innerHTML = `
+            <div class="kanji-large" id="cardKanji">一</div>
+            <div class="hint-text">💡 Click Card to Reveal Answer</div>
+        `;
+        startStudySession();
+    }
+
+    // INITIAL LOAD
+    window.addEventListener("DOMContentLoaded", () => {
+        loadSrsData();
+        renderDashboard();
+    });
+</script>
+
+</body>
+</html>

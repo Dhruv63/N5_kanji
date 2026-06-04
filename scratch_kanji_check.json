@@ -1,0 +1,8 @@
+{
+  "input_len": 103,
+  "assigned_len": 103,
+  "unique_assigned_len": 103,
+  "missing": "校",
+  "extra": "活",
+  "duplicates": ""
+}
