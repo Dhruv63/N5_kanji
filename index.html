@@ -1475,7 +1475,7 @@
                     <div class="congrats-overlay" id="gameCongratsOverlay">
                         <h4>🏆 Masterful Brushwork!</h4>
                         <p>You traced all strokes in the correct order and direction!</p>
-                        <button class="practice-btn" onclick="setPracticeMode('free')" style="background: var(--primary-cafe); color: #ffffff;">Keep Doodling</button>
+                        <button class="practice-btn" onclick="replayGame()" style="background: var(--primary-cafe); color: #ffffff;">🔄 Trace Again</button>
                     </div>
                 </div>
 
@@ -4370,6 +4370,12 @@
             btnToggleGuide.innerText = "👁️ Show Guide";
         }
     });
+
+    // Replay Game Mode without switching to Free Draw
+    window.replayGame = function() {
+        document.getElementById("gameCongratsOverlay").classList.remove("active");
+        startGameMode();
+    };
 
     // Practice Mode Controller
     window.setPracticeMode = function(mode) {
