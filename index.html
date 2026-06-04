@@ -25,6 +25,84 @@
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Audio Pronunciation Buttons */
+        .audio-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            transition: var(--transition-smooth);
+            padding: 5px;
+            flex-shrink: 0;
+        }
+        .audio-btn:hover {
+            background-color: var(--border-color);
+            transform: scale(1.1);
+        }
+        .audio-btn svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--primary-cafe);
+        }
+        .audio-btn.mini {
+            width: 22px;
+            height: 22px;
+            padding: 3px;
+        }
+
+        .audio-btn-large {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--primary-cafe);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: var(--shadow-cozy);
+            transition: var(--transition-smooth);
+            font-family: inherit;
+        }
+        .audio-btn-large:hover {
+            border-color: var(--accent-cozy);
+            transform: translateY(-1px);
+            background-color: #ffffff;
+        }
+        .audio-btn-large svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--primary-cafe);
+        }
+
+        .kanji-row-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .vocab-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+
+        .sentence-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -470,20 +548,19 @@
             }
 
             tbody tr {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 16px !important;
+                margin-bottom: 12px !important;
                 background: var(--card-bg);
                 border: 2px solid var(--border-color);
-                border-radius: 18px;
-                padding: 18px;
-                margin-bottom: 20px;
+                border-radius: 16px;
                 box-shadow: var(--shadow-cozy);
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            tbody tr:last-child {
-                margin-bottom: 0;
+                gap: 15px;
+                cursor: pointer;
+                transition: var(--transition-smooth);
             }
 
             tbody tr:hover {
@@ -491,100 +568,80 @@
                 box-shadow: var(--shadow-hover);
             }
 
+            tbody tr:last-child {
+                margin-bottom: 0 !important;
+            }
+
             td {
+                display: block !important;
+                border: none !important;
                 padding: 0 !important;
-                border-bottom: 1px dashed var(--border-color) !important;
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                width: 100% !important;
-                text-align: left;
+                width: auto !important;
             }
 
-            td:last-child {
-                border-bottom: none !important;
+            /* Hide heavy details on mobile main card */
+            td:nth-child(4), td:nth-child(5), td:nth-child(6) {
+                display: none !important;
             }
 
-            /* Special layout for Kanji Col */
+            /* Left block: Kanji, Play button, SRS badge */
             td:nth-child(1) {
-                border-bottom: 2px solid var(--border-color) !important;
-                padding-bottom: 8px !important;
+                flex-shrink: 0;
             }
 
             .kanji-col-container {
-                flex-direction: row !important;
-                justify-content: space-between;
-                width: 100%;
+                flex-direction: column !important;
                 align-items: center;
+                gap: 4px;
+            }
+
+            .kanji-row-header {
+                display: flex;
+                align-items: center;
+                gap: 6px;
             }
 
             .kanji-col {
-                font-size: 3.2rem;
+                font-size: 2.2rem !important;
+                text-align: center;
+                width: auto !important;
+            }
+
+            /* Center block: English Meaning */
+            td:nth-child(2) {
+                flex-grow: 1;
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
                 text-align: left;
-                width: auto;
             }
 
-            /* Add labels dynamically on mobile cards */
-            td:nth-child(2)::before {
-                content: "Meaning";
-                font-size: 0.7rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                letter-spacing: 0.05em;
+            .meaning-tag {
+                font-size: 1.05rem !important;
+                margin-bottom: 0 !important;
+                color: var(--primary-cafe);
             }
 
-            td:nth-child(3)::before {
-                content: "Readings";
-                font-size: 0.7rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                letter-spacing: 0.05em;
-            }
-
-            td:nth-child(4)::before {
-                content: "Stroke Hint";
-                font-size: 0.7rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                letter-spacing: 0.05em;
-            }
-
-            td:nth-child(5)::before {
-                content: "Visual Mnemonic";
-                font-size: 0.7rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                letter-spacing: 0.05em;
-            }
-
-            td:nth-child(6)::before {
-                content: "Contextual Example";
-                font-size: 0.7rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: var(--text-muted);
-                letter-spacing: 0.05em;
+            /* Right block: Readings stacked */
+            td:nth-child(3) {
+                flex-shrink: 0;
+                display: flex !important;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 4px;
             }
 
             .reading-container {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 8px;
-                max-width: 100%;
-            }
-
-            .stroke-hint, .interpretation-text, .example-box {
+                align-items: flex-end !important;
+                gap: 4px !important;
                 max-width: 100% !important;
+                flex-direction: column !important;
             }
 
-            .example-box {
-                border-radius: 12px;
-                border: 1px solid var(--border-color);
-                border-left: 4px solid var(--accent-cozy);
+            .reading-badge {
+                font-size: 0.75rem !important;
+                padding: 2px 6px !important;
+                width: fit-content !important;
             }
 
             /* Modal Adaptations */
@@ -596,6 +653,13 @@
             .modal-header {
                 padding: 20px;
                 gap: 15px;
+            }
+
+            .modal-kanji-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
             }
 
             .modal-kanji-circle {
@@ -621,7 +685,7 @@
 
             /* Flashcard Study view */
             .flashcard-wrapper {
-                height: 480px;
+                height: 380px;
             }
 
             .srs-stats-banner {
@@ -1155,7 +1219,13 @@
                     <!-- Front face -->
                     <div class="card-face card-front">
                         <div class="kanji-large" id="cardKanji">一</div>
-                        <div class="hint-text">💡 Click Card to Reveal Answer</div>
+                        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+                            <button class="audio-btn-large" onclick="speakText(currentStudyItem ? currentStudyItem.kanji : '一'); event.stopPropagation();" style="background: #ffffff; border: 1px dashed var(--accent-cozy);">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                Pronounce Hint
+                            </button>
+                        </div>
+                        <div class="hint-text" style="margin-top: 15px;">💡 Click Card to Reveal Answer</div>
                     </div>
                     <!-- Back face (Rotated 180deg) -->
                     <div class="card-face card-back" id="cardBackFace">
@@ -1182,7 +1252,13 @@
 <div class="modal-overlay" id="detailModal">
     <div class="kanji-modal">
         <div class="modal-header">
-            <div class="modal-kanji-circle" id="modalKanji">一</div>
+            <div class="modal-kanji-container">
+                <div class="modal-kanji-circle" id="modalKanji">一</div>
+                <button class="audio-btn-large" id="modalAudioBtn" style="margin-top: 8px;">
+                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                    Listen
+                </button>
+            </div>
             <div class="modal-title-area">
                 <h2 id="modalMeaning">One</h2>
                 <p>N5 Core Kanji</p>
@@ -1210,21 +1286,41 @@
             <div class="vocab-grid">
                 <div class="vocab-card simple-vocab">
                     <div class="vocab-badge">Simple Usage (Kun'yomi)</div>
-                    <div class="vocab-jp-word" id="simpleWord">一つ</div>
+                    <div class="vocab-header">
+                        <div class="vocab-jp-word" id="simpleWord">一つ</div>
+                        <button class="audio-btn" id="simpleWordAudio" title="Pronounce word">
+                            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                    </div>
                     <div class="vocab-reading" id="simpleReading">hitotsu</div>
                     <div class="vocab-meaning" id="simpleMeaning">one item</div>
                     <div class="vocab-sentence-box">
-                        <span class="vocab-sentence-jp" id="simpleSentence">sentence</span>
+                        <div class="sentence-header">
+                            <span class="vocab-sentence-jp" id="simpleSentence">sentence</span>
+                            <button class="audio-btn mini" id="simpleSentenceAudio" title="Pronounce sentence">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                            </button>
+                        </div>
                         <span class="vocab-sentence-en" id="simpleSentenceEn">translation</span>
                     </div>
                 </div>
                 <div class="vocab-card compound-vocab">
                     <div class="vocab-badge">Compound Usage (On'yomi)</div>
-                    <div class="vocab-jp-word" id="compoundWord">一日</div>
+                    <div class="vocab-header">
+                        <div class="vocab-jp-word" id="compoundWord">一日</div>
+                        <button class="audio-btn" id="compoundWordAudio" title="Pronounce word">
+                            <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                    </div>
                     <div class="vocab-reading" id="compoundReading">ichinichi</div>
                     <div class="vocab-meaning" id="compoundMeaning">one day</div>
                     <div class="vocab-sentence-box">
-                        <span class="vocab-sentence-jp" id="compoundSentence">sentence</span>
+                        <div class="sentence-header">
+                            <span class="vocab-sentence-jp" id="compoundSentence">sentence</span>
+                            <button class="audio-btn mini" id="compoundSentenceAudio" title="Pronounce sentence">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                            </button>
+                        </div>
                         <span class="vocab-sentence-en" id="compoundSentenceEn">translation</span>
                     </div>
                 </div>
@@ -1234,6 +1330,29 @@
 </div>
 
 <script>
+    // Text-to-Speech Pronunciation
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any current speech
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ja-JP';
+            
+            // Try to find a native Japanese voice
+            const voices = window.speechSynthesis.getVoices();
+            const jaVoice = voices.find(v => v.lang === 'ja-JP' || v.lang.startsWith('ja'));
+            if (jaVoice) {
+                utterance.voice = jaVoice;
+            }
+            utterance.rate = 0.85; // Slightly slower for language learners
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+    
+    // Load voices list proactively for Webkit/Chrome
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+    }
+
     // 103 Kanji Database
     const kanjiData = [
     {
@@ -3725,12 +3844,21 @@
             themeKanji.forEach(k => {
                 const tr = document.createElement("tr");
                 tr.dataset.kanji = k.kanji;
-                tr.addEventListener("click", () => openModal(k));
+                tr.addEventListener("click", (e) => {
+                    // Prevent row click modal from opening if they clicked the audio button
+                    if (e.target.closest('.audio-btn')) return;
+                    openModal(k);
+                });
 
                 tr.innerHTML = `
                     <td>
                         <div class="kanji-col-container">
-                            <span class="kanji-col">${k.kanji}</span>
+                            <div class="kanji-row-header">
+                                <span class="kanji-col">${k.kanji}</span>
+                                <button class="audio-btn" title="Listen Pronunciation">
+                                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                                </button>
+                            </div>
                             ${getBeanBadge(k.kanji)}
                         </div>
                     </td>
@@ -3750,6 +3878,13 @@
                         </div>
                     </td>
                 `;
+
+                // Bind audio event
+                tr.querySelector('.audio-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    speakText(k.kanji);
+                });
+
                 tbody.appendChild(tr);
             });
 
@@ -3763,7 +3898,10 @@
     const modal = document.getElementById("detailModal");
     const modalClose = document.getElementById("modalClose");
 
+    let currentModalItem = null;
+
     function openModal(k) {
+        currentModalItem = k;
         document.getElementById("modalKanji").innerText = k.kanji;
         document.getElementById("modalMeaning").innerText = k.meaning;
         document.getElementById("modalKun").innerText = k.kun.startsWith("Kun:") ? k.kun : "Kun: " + k.kun;
@@ -3787,6 +3925,23 @@
 
         modal.classList.add("active");
     }
+
+    // Modal audio click handlers
+    document.getElementById("modalAudioBtn").addEventListener("click", () => {
+        if (currentModalItem) speakText(currentModalItem.kanji);
+    });
+    document.getElementById("simpleWordAudio").addEventListener("click", () => {
+        if (currentModalItem) speakText(currentModalItem.simple.word);
+    });
+    document.getElementById("simpleSentenceAudio").addEventListener("click", () => {
+        if (currentModalItem) speakText(currentModalItem.simple.sentence);
+    });
+    document.getElementById("compoundWordAudio").addEventListener("click", () => {
+        if (currentModalItem) speakText(currentModalItem.compound.word);
+    });
+    document.getElementById("compoundSentenceAudio").addEventListener("click", () => {
+        if (currentModalItem) speakText(currentModalItem.compound.sentence);
+    });
 
     function closeModal() {
         modal.classList.remove("active");
@@ -3896,11 +4051,14 @@
         // Build Card Backface details
         const back = document.getElementById("cardBackFace");
         back.innerHTML = `
-            <div class="modal-header" style="padding: 15px 0 10px 0; border-bottom: 2px solid var(--border-color);">
-                <div class="modal-kanji-circle" style="width: 70px; height: 70px; font-size: 2.8rem; border-radius: 12px; margin-right: 15px;">${currentStudyItem.kanji}</div>
-                <div class="modal-title-area">
-                    <h2 style="font-size: 1.4rem;">${currentStudyItem.meaning}</h2>
-                    <p style="font-size: 0.8rem;">Visual study card</p>
+            <div class="modal-header" style="padding: 15px 0 10px 0; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; justify-content: flex-start; gap: 12px;">
+                <div class="modal-kanji-circle" style="width: 60px; height: 60px; font-size: 2.2rem; border-radius: 12px; flex-shrink: 0; margin-right: 0;">${currentStudyItem.kanji}</div>
+                <div class="modal-title-area" style="flex-grow: 1;">
+                    <h2 style="font-size: 1.25rem;">${currentStudyItem.meaning}</h2>
+                    <button class="audio-btn-large" onclick="speakText('${currentStudyItem.kanji}'); event.stopPropagation();" style="padding: 4px 8px; font-size: 0.7rem; margin-top: 4px;">
+                        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        Listen
+                    </button>
                 </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px; max-height: 290px; overflow-y: auto; padding-right: 5px;">
@@ -3920,12 +4078,22 @@
                 <div class="vocab-grid" style="gap: 10px;">
                     <div class="vocab-card simple-vocab" style="padding: 10px;">
                         <div class="vocab-badge" style="font-size: 0.65rem; margin-bottom: 4px;">Simple</div>
-                        <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.simple.word} (${currentStudyItem.simple.reading})</div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.simple.word} (${currentStudyItem.simple.reading})</span>
+                            <button class="audio-btn mini" onclick="speakText('${currentStudyItem.simple.word}'); event.stopPropagation();">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                            </button>
+                        </div>
                         <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">${currentStudyItem.simple.meaning}</div>
                     </div>
                     <div class="vocab-card compound-vocab" style="padding: 10px;">
                         <div class="vocab-badge" style="font-size: 0.65rem; margin-bottom: 4px;">Compound</div>
-                        <div style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.compound.word} (${currentStudyItem.compound.reading})</div>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <span style="font-weight: 800; font-size: 1.1rem; color: var(--text-main);">${currentStudyItem.compound.word} (${currentStudyItem.compound.reading})</span>
+                            <button class="audio-btn mini" onclick="speakText('${currentStudyItem.compound.word}'); event.stopPropagation();">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                            </button>
+                        </div>
                         <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">${currentStudyItem.compound.meaning}</div>
                     </div>
                 </div>
